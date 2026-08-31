@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>叶钰林の蜜桃训练手册</title>
+<style>
+:root{--pink:#FF5FA2;--pink2:#FF87BC;--pink3:#FFC2DA;--deep:#D6336C;--text:#3D3D4E;--text2:#9C8BA8;--line:#F0D4E4;--dark:#26262F;--dark2:#3E2640}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+button{touch-action:manipulation}
+html{scroll-behavior:smooth}
+body{font-family:'Microsoft YaHei','PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;background:linear-gradient(180deg,#FFF7FB 0%,#F7EEFF 55%,#FFE9F2 100%);color:#3D3D4E;min-height:100vh;overflow-x:hidden}
+.hearts-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.heart{position:absolute;bottom:-40px;animation:floatUp linear infinite;opacity:.5;filter:drop-shadow(0 2px 4px rgba(244,143,177,.25))}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.5}100%{transform:translateY(-110vh) rotate(28deg);opacity:0}}
+.hero{position:relative;z-index:1;text-align:center;padding:34px 18px 30px;background:linear-gradient(160deg,#26262F 0%,#3E2640 52%,#7A3355 100%);border-radius:0 0 34px 34px;margin-bottom:16px;overflow:hidden;box-shadow:0 14px 34px rgba(60,30,60,.28)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,95,162,.22) 0 34px,transparent 36px),radial-gradient(circle at 88% 18%,rgba(185,168,245,.25) 0 26px,transparent 28px),radial-gradient(circle at 70% 90%,rgba(255,135,188,.18) 0 42px,transparent 44px);pointer-events:none}
+.hero-mascots{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:22px}
+.hero-mascot svg{width:112px;height:auto;filter:drop-shadow(0 8px 16px rgba(0,0,0,.28))}
+.hero-title{position:relative;font-size:clamp(27px,6.5vw,40px);font-weight:900;background:linear-gradient(120deg,#fff 10%,#FFC2DA 55%,#FF87BC 90%);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px;margin-top:8px}
+.hero-sub{position:relative;color:#E8C9DC;font-size:14px;margin-top:8px}
+.hero-quote{position:relative;margin:14px auto 18px;max-width:520px;background:rgba(255,255,255,.12);border:1.5px dashed rgba(255,255,255,.5);border-radius:16px;padding:10px 16px;font-size:14px;color:#FFE3F0;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15);transition:transform .2s}
+.hero-quote:hover{transform:scale(1.02)}
+.hero-cta{display:inline-block;background:linear-gradient(135deg,#FF5FA2,#FF87BC);color:#fff;font-weight:800;text-decoration:none;border:none;border-radius:999px;padding:12px 28px;font-size:15px;font-family:inherit;cursor:pointer;box-shadow:0 10px 22px rgba(255,95,162,.45);transition:transform .2s,box-shadow .2s;position:relative}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(255,95,162,.5)}
+.tabs{position:sticky;top:0;z-index:60;display:flex;gap:8px;padding:10px 12px;background:rgba(255,249,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid #FFE0EB;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex:0 0 auto;white-space:nowrap;border:1.5px solid #FFDCE8;border-radius:999px;padding:9px 14px;font-size:13px;font-weight:700;color:#A56E83;background:#fff;cursor:pointer;transition:all .2s;font-family:inherit}
+.tab-btn.active{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border-color:transparent;box-shadow:0 6px 14px rgba(255,95,162,.35)}
+main{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:18px 14px 70px}
+.view{display:none}
+.view.active{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card{background:#FFFEFC;border:1.5px solid #FFDCE8;border-radius:22px;box-shadow:0 10px 26px rgba(244,143,177,.16);padding:18px;margin-bottom:18px}
+.sec-title{font-size:21px;font-weight:900;color:#D96B92;margin-bottom:4px}
+.sec-desc{font-size:13px;color:#B98A9C;margin-bottom:14px}
+.center{text-align:center}
+.block-title{font-size:16px;color:#D96B92;margin-bottom:10px}
+.today-card{text-align:center}
+.today-card .big{font-size:22px;font-weight:900;color:#D96B92}
+.today-card .sub{font-size:13px;color:#B98A9C;margin:6px 0 12px}
+.day-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
+.day-tab{border:1.5px solid #FFDCE8;border-radius:999px;padding:10px 16px;font-size:14px;font-weight:800;color:#A56E83;background:#FFF4F8;cursor:pointer;transition:all .2s;font-family:inherit}
+.day-tab.active{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border-color:transparent;box-shadow:0 6px 14px rgba(255,95,162,.35)}
+.day-head h3{font-size:20px;color:#D96B92}
+.day-head p{font-size:13px;color:#B98A9C;margin-top:4px}
+details.mini{margin:10px 0;background:#FFF7FA;border:1.5px dashed #FFC7DC;border-radius:16px;padding:10px 14px}
+details.mini summary{cursor:pointer;font-weight:800;color:#C4688B;font-size:14px;list-style:none}
+details.mini summary::before{content:'▸ ';color:#FF9EBB}
+details.mini[open] summary::before{content:'▾ '}
+details.mini ul{margin:10px 0 2px 20px;color:#8A6375;font-size:13.5px;line-height:1.9}
+.ex-card{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start;position:relative}
+@media(max-width:720px){.ex-card{grid-template-columns:1fr}.ex-card .fig-wrap{max-width:340px;margin:0 auto}}
+.fig-wrap{position:relative;background:linear-gradient(180deg,#FFF8FA,#FFEDF4);border:1.5px dashed #FFBBD4;border-radius:18px;padding:10px 8px 12px}
+.fig svg{width:100%;height:auto;display:block}
+.fig .pe,.fig .lb-pe{display:none}
+.fig.show-end .ps,.fig.show-end .lb-ps{display:none}
+.fig.show-end .pe,.fig.show-end .lb-pe{display:block}
+.fig.show-end svg{animation:pop .3s ease}
+.fig.animate .ps{display:block;animation:psAnim 2.6s ease-in-out infinite}
+.fig.animate .pe{display:block;animation:peAnim 2.6s ease-in-out infinite}
+@keyframes psAnim{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
+@keyframes peAnim{0%,42%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
+@keyframes pop{0%{transform:scale(.97)}60%{transform:scale(1.02)}100%{transform:scale(1)}}
+.ex-num{position:absolute;top:-12px;left:14px;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;display:grid;place-items:center;font-weight:900;box-shadow:0 6px 12px rgba(255,95,162,.4);z-index:2}
+.fig-toggle{border:1.5px solid #FFBBD4;background:#fff;color:#D96B92;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 10px rgba(244,143,177,.2);font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.fig-btns{display:flex;gap:6px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.lnk{display:inline-block;margin-top:10px;padding:8px 14px;border-radius:999px;background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;font-weight:800;font-size:12.5px;text-decoration:none;box-shadow:0 6px 14px rgba(255,95,162,.3)}
+.ex-info h3{font-size:18px;color:#D96B92;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{background:#FFF4F8;border:1px solid #FFDCE8;color:#C4688B;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700}
+.ex-info h4{font-size:13.5px;color:#B98A9C;margin:12px 0 6px}
+.steps,.keys,.mistakes{margin-left:20px;color:#7A5567;font-size:13.5px;line-height:1.85}
+.steps li::marker,.keys li::marker,.mistakes li::marker{color:#FF9EBB;font-weight:800}
+.breath{background:#FFF7E8;border:1px solid #FFE9C2;border-radius:12px;padding:8px 12px;font-size:13px;color:#B98A5E;margin-top:10px}
+.alt-list{display:grid;gap:6px}
+.alt{display:flex;gap:8px;align-items:center;width:100%;text-align:left;background:#fff;border:1.5px solid #FFE4EE;border-radius:12px;padding:9px 12px;font-size:13px;font-family:inherit;color:#6B4A5A;cursor:pointer;transition:border .2s,background .2s}
+.alt:hover{border-color:#FF9EBB}
+.alt.picked{background:#FFE9F2;border-color:#FF9EBB}
+.alt .alt-check{display:none;margin-left:auto;color:#E85D8E;font-style:normal;font-weight:900}
+.alt.picked .alt-check{display:inline}
+.alt-now{margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;background:#26262F;color:#FFE3F0;border-radius:999px;padding:6px 12px;font-size:12px}
+.alt-now b{color:#FF87BC}
+.alt-now .restore{border:1px solid #FF87BC;background:transparent;color:#FFE3F0;border-radius:999px;padding:3px 10px;font-size:11px;cursor:pointer;font-family:inherit}
+.alt b{color:#D96B92;white-space:nowrap}
+.alt span{color:#A98A97;flex:1}
+.alt-tag{font-style:normal;font-size:11px;color:#E85D8E;background:#FFE9F2;border:1px solid #FFD4E3;border-radius:999px;padding:2px 8px;white-space:nowrap;flex:0 0 auto}
+.ex-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 10px}
+.info-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:44px;border-radius:999px;border:1.5px solid #FFBBD4;background:#fff;color:#D96B92;font-weight:800;font-size:13px;font-family:inherit;cursor:pointer;padding:9px 12px;transition:all .2s}
+.info-btn.active{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border-color:transparent;box-shadow:0 6px 14px rgba(255,95,162,.3)}
+.info-btn .cnt{background:#FFE9F2;color:#E85D8E;border-radius:999px;padding:1px 8px;font-size:11px}
+.info-btn.active .cnt{background:rgba(255,255,255,.25);color:#fff}
+.alt-panel,.det-panel{display:none}
+.alt-panel.open,.det-panel.open{display:block;animation:fadeUp .25s ease}
+.alt-panel{margin-bottom:10px}
+.day-tools{margin:12px 0 4px;text-align:center}
+.day-tools .info-btn{max-width:320px;margin:0 auto}
+@media(min-width:721px){.ex-actions,.day-tools{display:none}.alt-panel,.det-panel{display:block}}
+.check-btn{width:min(280px,82%);border:none;border-radius:999px;padding:16px 20px;font-size:18px;font-weight:900;font-family:inherit;background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;cursor:pointer;box-shadow:0 10px 22px rgba(255,95,162,.4);transition:transform .2s;margin:4px 0 6px}
+.check-btn:hover{transform:translateY(-2px)}
+.check-btn.done{background:#fff;color:#D96B92;border:2px solid #FF9EBB;box-shadow:0 8px 18px rgba(244,143,177,.2)}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.stat-card{background:#FFFEFC;border:1.5px solid #FFDCE8;border-radius:18px;padding:14px 8px;text-align:center;box-shadow:0 8px 20px rgba(244,143,177,.13)}
+.stat-card .n{font-size:24px;font-weight:900;color:#E85D8E}
+.stat-card .t{font-size:12px;color:#B98A9C;margin-top:3px}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;color:#D96B92;font-size:15px}
+.cal-head button{border:1.5px solid #FFDCE8;background:#FFF4F8;border-radius:999px;width:30px;height:30px;cursor:pointer;color:#D96B92;font-weight:900;font-size:16px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-label{font-size:11px;color:#C9A3B2;text-align:center;padding-bottom:2px}
+.cal-cell{aspect-ratio:1;display:grid;place-items:center;border-radius:12px;font-size:12.5px;color:#8A6375;background:#FFF8FA;border:1.5px solid #FFE4EE;position:relative}
+.cal-cell.done{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border-color:transparent;font-weight:800;box-shadow:0 4px 10px rgba(255,95,162,.3)}
+.cal-cell.today{outline:2.5px solid #D96B92;outline-offset:1px}
+.cal-cell.blank{visibility:hidden}
+.cal-cell .mini-heart{position:absolute;font-size:8px;top:1px;right:3px}
+.form{margin-top:12px}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:12px;align-items:end}
+.field label{display:block;font-size:12px;color:#B98A9C;margin-bottom:4px;font-weight:700}
+.input,select.input,textarea.input{width:100%;border:1.5px solid #FFDCE8;border-radius:14px;padding:10px 12px;font-size:14px;color:#6B4A5A;background:#FFFDFB;font-family:inherit;outline:none;transition:border .2s}
+.input:focus{border-color:#FF9EBB}
+.btn{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border:none;border-radius:999px;padding:11px 22px;font-weight:800;cursor:pointer;font-size:14px;font-family:inherit;box-shadow:0 8px 18px rgba(255,95,162,.32);transition:transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.list-item{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#FFF8FA;border:1px solid #FFE4EE;border-radius:14px;padding:10px 12px;margin-bottom:8px;font-size:13px}
+.list-item .del{border:none;background:none;color:#E58AA8;cursor:pointer;font-size:16px}
+.list-item .meta{color:#B98A9C;font-size:12px}
+.empty{text-align:center;color:#C9A3B2;padding:22px 0;font-size:13.5px}
+.metric-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.metric-tab{border:1.5px solid #FFDCE8;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;background:#FFF4F8;color:#A56E83;cursor:pointer;font-family:inherit}
+.metric-tab.active{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border-color:transparent}
+.chart-wrap{background:#FFF8FA;border:1.5px dashed #FFC7DC;border-radius:18px;padding:12px;overflow-x:auto}
+.chart-wrap svg{min-width:320px;width:100%;height:auto}
+.lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:14px}
+.lib-card{background:#FFFEFC;border:1.5px solid #FFDCE8;border-radius:20px;padding:14px;cursor:pointer;box-shadow:0 8px 20px rgba(244,143,177,.13);transition:transform .2s}
+.lib-card:hover{transform:translateY(-3px)}
+.lib-card .lib-fig{background:linear-gradient(180deg,#FFF8FA,#FFEDF4);border-radius:14px;border:1.5px dashed #FFBBD4;padding:6px;margin-bottom:10px}
+.lib-card h4{color:#D96B92;font-size:15px}
+.lib-meta{font-size:12px;color:#B98A9C;margin-top:3px}
+.lib-detail{display:none;margin-top:10px;border-top:1.5px dashed #FFDCE8;padding-top:10px;font-size:13px;color:#7A5567;line-height:1.8}
+.lib-card.open .lib-detail{display:block}
+.lib-detail .lb2{margin-top:8px;font-weight:800;color:#C4688B;display:block}
+.chips-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip-btn{border:1.5px solid #FFDCE8;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:700;background:#FFF4F8;color:#A56E83;cursor:pointer;font-family:inherit}
+.chip-btn.active{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border-color:transparent}
+.tan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:14px}
+.tan-item{background:#FFF8FA;border:1.5px solid #FFE4EE;border-radius:18px;padding:16px}
+.tan-item .ico{font-size:30px}
+.tan-item h4{color:#D96B92;margin:8px 0 6px;font-size:15px}
+.tan-item p{font-size:13px;color:#8A6375;line-height:1.8}
+.note{font-size:12px;color:#C9A3B2;margin-top:14px;line-height:1.7}
+footer{position:relative;z-index:1;text-align:center;padding:10px 16px 34px;color:#C9A3B2;font-size:12.5px;line-height:1.8}
+#toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(80px);background:#fff;color:#D96B92;border:1.5px solid #FFC7DC;border-radius:999px;padding:12px 22px;font-weight:800;font-size:14px;box-shadow:0 12px 30px rgba(244,143,177,.35);z-index:100;transition:transform .35s ease,opacity .35s;opacity:0;pointer-events:none;white-space:nowrap}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.burst{position:fixed;z-index:99;pointer-events:none;animation:burstAnim .9s ease-out forwards}
+@keyframes burstAnim{0%{transform:translate(0,0) scale(.6);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.2);opacity:0}}
+</style>
+</head>
+<body>
+<div class="hearts-bg" aria-hidden="true"></div>
+<header class="hero">
+  <div class="hero-mascots"><div class="hero-mascot" id="heroKuromi"></div><div class="hero-mascot" id="heroKitty"></div></div>
+  <h1 class="hero-title">叶钰林の蜜桃训练手册</h1>
+  <p class="hero-sub">给最爱的你 · 谭成义式三分化 · 臀腿特训版</p>
+  <p class="hero-quote" id="heroQuote" title="点我换一句">加载中…</p>
+  <button class="hero-cta" onclick="switchTab('plan')">💪 开始今天的训练</button>
+</header>
+<nav class="tabs" aria-label="页面导航">
+  <button class="tab-btn active" data-tab="plan" onclick="switchTab('plan')">🍑 训练计划</button>
+  <button class="tab-btn" data-tab="checkin" onclick="switchTab('checkin')">📅 打卡小屋</button>
+  <button class="tab-btn" data-tab="body" onclick="switchTab('body')">📈 我的变化</button>
+  <button class="tab-btn" data-tab="library" onclick="switchTab('library')">📚 动作库</button>
+  <button class="tab-btn" data-tab="tan" onclick="switchTab('tan')">📖 谭成义模式</button>
+</nav>
+<main>
+  <section class="view active" id="view-plan">
+    <div class="card today-card" id="todayCard"></div>
+    <div class="card">
+      <h2 class="sec-title">📋 三分化训练计划</h2>
+      <p class="sec-desc">谭成义 × 凯圣王体系 · 练三休一 · 大肌群优先 · 替换动作器械版 · 每个动作都能一键搜谭成义视频演示 📹</p>
+      <div class="day-tabs" id="dayTabs"></div>
+      <div id="dayContent"></div>
+    </div>
+  </section>
+  <section class="view" id="view-checkin">
+    <div class="card center">
+      <h2 class="sec-title">📅 打卡小屋</h2>
+      <p class="sec-desc">坚持就是胜利，小叶子加油鸭！</p>
+      <button class="check-btn" id="checkBtn" onclick="toggleCheck()">💖 今天打卡！</button>
+    </div>
+    <div class="stats-row" id="statsRow"></div>
+    <div class="card">
+      <div class="cal-head" id="calHead"></div>
+      <div class="cal" id="calGrid"></div>
+    </div>
+    <div class="card">
+      <h3 class="block-title">📝 训练日志</h3>
+      <form id="logForm" class="form">
+        <div class="form-row">
+          <div class="field"><label>日期</label><input class="input" type="date" id="logDate" required></div>
+          <div class="field"><label>训练内容</label><select class="input" id="logDay"><option>推日</option><option>拉日</option><option>腿日</option><option>休息日</option><option>有氧</option></select></div>
+          <div class="field"><label>时长（分钟）</label><input class="input" type="number" id="logDur" min="0" placeholder="60"></div>
+        </div>
+        <div class="field"><label>备注 / 今天的感受</label><textarea class="input" id="logNote" rows="2" placeholder="今天深蹲加了 5kg，超开心～"></textarea></div>
+        <button class="btn" type="submit">➕ 记一笔</button>
+      </form>
+      <div id="logList" style="margin-top:12px"></div>
+    </div>
+  </section>
+  <section class="view" id="view-body">
+    <div class="card">
+      <h2 class="sec-title">📈 我的变化</h2>
+      <p class="sec-desc">把身体数据记下来，看到每一寸努力</p>
+      <div class="metric-tabs" id="metricTabs"></div>
+      <div class="chart-wrap" id="chartWrap"></div>
+    </div>
+    <div class="card">
+      <h3 class="block-title">➕ 新增记录</h3>
+      <form id="msForm" class="form">
+        <div class="form-row">
+          <div class="field"><label>日期</label><input class="input" type="date" id="msDate" required></div>
+          <div class="field"><label>体重 kg</label><input class="input" type="number" step="0.1" id="msWeight" placeholder="70.0"></div>
+          <div class="field"><label>臀围 cm</label><input class="input" type="number" step="0.1" id="msHip" placeholder="98"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>腰围 cm</label><input class="input" type="number" step="0.1" id="msWaist" placeholder="75"></div>
+          <div class="field"><label>腿围 cm</label><input class="input" type="number" step="0.1" id="msThigh" placeholder="55"></div>
+          <div class="field"><label>&nbsp;</label><button class="btn" type="submit">💾 保存</button></div>
+        </div>
+      </form>
+    </div>
+    <div class="card"><h3 class="block-title">📄 历史记录</h3><div id="msList"></div></div>
+  </section>
+  <section class="view" id="view-library">
+    <div class="card">
+      <h2 class="sec-title">📚 动作库</h2>
+      <p class="sec-desc">点击卡片展开动作要领与替换方案</p>
+      <input class="input" id="libSearch" placeholder="🔍 搜索动作名称…">
+      <div class="chips-row" id="libChips"></div>
+    </div>
+    <div class="lib-grid" id="libGrid"></div>
+  </section>
+  <section class="view" id="view-tan">
+    <div class="card">
+      <h2 class="sec-title">📖 谭成义式训练模式</h2>
+      <p class="sec-desc">本页动作编排参考健身博主谭成义 × 凯圣王的三分化体系</p>
+      <div class="tan-grid">
+        <div class="tan-item"><div class="ico">🧩</div><h4>三分化训练</h4><p>推日（胸·肩·三头）、拉日（背·后束·二头）、腿日（股四头·腘绳肌），大肌群轮换，恢复更充分。</p></div>
+        <div class="tan-item"><div class="ico">🔁</div><h4>练三休一</h4><p>练三天休一天，谭成义本人推荐「练三休一」或「练二休一」，休息也是进步的一部分。</p></div>
+        <div class="tan-item"><div class="ico">🏋️</div><h4>大肌群优先</h4><p>每个训练日复合动作打头：卧推、高位下拉、深蹲放最前，孤立动作收尾。</p></div>
+        <div class="tan-item"><div class="ico">🎯</div><h4>动作质量第一</h4><p>谭成义最常喊的就是「收紧！收紧！收紧！」——重量次要，控制、幅度、发力感才是关键。</p></div>
+        <div class="tan-item"><div class="ico">🔥</div><h4>热身与拉伸</h4><p>他的跟练里热身和拉伸占比很高：泡沫轴松解、脚踝激活、拉伸全套，本页每个训练日都配好了。</p></div>
+        <div class="tan-item"><div class="ico">🍑</div><h4>臀腿加强版</h4><p>腿日保留股四头与腘绳肌，并加入臀推等臀大肌动作，贴合你「臀腿为主」的偏好。</p></div>
+      </div>
+      <p class="note">※ 本页面为粉丝向改编，动作与流程参考公开视频与教程整理，非谭成义官方合作内容；训练前请充分热身，量力而行。</p>
+    </div>
+  </section>
+</main>
+<footer>made with 🖤💗 只为叶钰林 · Hello Kitty × 库洛米主题<br>坚持训练，库洛米和 Kitty 都为你加油～</footer>
+<div id="toast" role="status"></div>
+<script>
+const EX={
+ push:{
+  key:'push',emoji:'💪',title:'推日 · 胸 肩 三头',focus:'主练：胸大肌 / 三角肌 / 肱三头',
+  warmup:['泡沫轴松解胸椎、背阔肌（每侧 30 秒）','肩关节环绕 10 圈 + 弹力带肩袖激活（外旋 2×15）','徒手俯卧撑 2×10，激活胸肩','空杆卧推 2×12 热身组，逐组加重'],
+  stretch:['门框胸大肌拉伸 每侧 30 秒','站姿三角肌前束拉伸 每侧 30 秒','肱三头过顶拉伸 每侧 30 秒'],
+  exercises:[
+   {id:'bench',name:'杠铃平板卧推',target:'胸大肌 · 肱三头 · 三角肌前束',sets:'4组 × 8-12次',rest:'组间休息 90~120 秒',muscles:['胸','三头'],
+    steps:['仰卧平凳，双眼在杠铃正下方，肩胛骨后收下沉，双脚踩实地面','宽握杠铃（略宽于肩），从架上推出至胸部正上方','下放至杠铃轻触胸口中下部，小臂保持垂直地面','推起至手臂伸直，但不要锁死肘关节'],
+    keys:['肩胛全程「锁住」，不要耸肩','杠铃轨迹微斜向后上方，像「弧线」推','手腕保持中立，不向后折','臀部全程贴凳，不要借力顶腰'],
+    breath:'下放时吸气（胸肌拉长），推起时呼气。',
+    mistakes:['耸肩、肩胛离开凳面','手腕后折，压力落在手腕','下放太快弹胸、幅度半程','臀部离凳用腰借力'],
+    alts:[['器械推胸','轨迹固定、重量可调，女生也容易上手','bench'],['史密斯卧推','轨迹固定更安全，适合慢慢加重量','bench'],['哑铃卧推','重量灵活，可以从很轻开始','bench']]},
+   {id:'incline',name:'上斜哑铃卧推',target:'上胸 · 三角肌前束 · 肱三头',sets:'4组 × 8-12次',rest:'组间休息 90 秒',muscles:['胸','肩'],
+    steps:['斜凳调至 30~45°，哑铃先放腿上，蹬腿借力躺下','掌心朝前，哑铃举至肩膀正上方','下放至哑铃到胸部两侧，肘部约 45° 夹角，感受上胸拉伸','推起时向中间上方收拢，顶端不要相撞'],
+    keys:['小臂始终垂直地面','凳角太高会变成肩推，别超过 45°','下放别太深，肩部不舒服就减少幅度','核心收紧，腰部自然贴凳'],
+    breath:'下放吸气，上推呼气。',
+    mistakes:['凳角过高练成肩推','肘部外展到 90°，肩压力大','腰部反弓代偿','顶端哑铃相撞卸力'],
+    alts:[['上斜器械推胸','轨迹固定，容易找到上胸发力','incline'],['史密斯上斜推','轨迹固定更安全','incline'],['上斜杠铃卧推','力量够了再冲重量','incline']]},
+   {id:'dips',name:'双杠臂屈伸',target:'胸大肌下束 · 肱三头',sets:'3组 × 6-12次',rest:'组间休息 90~120 秒',muscles:['胸','三头'],
+    steps:['双手撑杠，身体微微前倾，膝盖微屈','屈肘下放，直到肩肘同高或略低，胸口有拉伸感','撑起还原，手臂伸直但不锁死'],
+    keys:['身体前倾越多越练胸，越直立越练三头','全程控制离心，别「砸」下去','肩膀不舒服就减小幅度或换动作','能轻松做 12 次以上再考虑负重'],
+    breath:'下放吸气，撑起呼气。',
+    mistakes:['只做半程，幅度不足','耸肩，肩部代偿','身体晃动借力','肩关节弹响还硬撑'],
+    alts:[['辅助双杠臂屈伸','有配重助力，女生也能做','dips'],['绳索下压','孤立三头，重量可调','pushdown'],['窄握器械推胸','轨迹固定，练胸下沿','bench']]},
+   {id:'shoulder-press',name:'坐姿哑铃肩推',target:'三角肌前束 · 中束 · 肱三头',sets:'4组 × 8-12次',rest:'组间休息 90 秒',muscles:['肩','三头'],
+    steps:['坐姿靠背调至 90°，哑铃举到耳朵两侧高度','核心收紧，腰部贴合靠背，向上推起哑铃','顶端哑铃在头顶上方微微靠近，不碰撞','缓慢下放回耳朵两侧'],
+    keys:['推起时不要耸肩，想象肩膀「沉下去」','手肘微微朝前，不是完全向两侧打开','腰部不要反弓借力，靠背就是你的依靠','哑铃不要落到太低，肩前束保持张力'],
+    breath:'上推呼气，下放吸气。',
+    mistakes:['腰部反弓，用身体借力','耸肩，斜方肌代偿','幅度太小只做半程','哑铃左右不对称'],
+    alts:[['器械推肩','轨迹固定最稳，新手友好','shoulder-press'],['史密斯肩推','轨迹固定更安全','shoulder-press'],['轻量哑铃肩推','小重量多次数找感觉','shoulder-press']]},
+   {id:'lateral',name:'哑铃侧平举',target:'三角肌中束',sets:'4组 × 12-15次',rest:'组间休息 60 秒',muscles:['肩'],
+    steps:['站姿微屈膝，双手持哑铃自然垂于体侧','手肘微屈，想象用「肘尖」把哑铃向两侧带起','举到与肩同高，停顿一秒','缓慢下放，回到体侧不触腿'],
+    keys:['小重量、高次数，借力少才有感觉','不要耸肩，肩胛保持稳定','身体不要前后晃动，核心微收','下放速度是举起的两倍（慢放）'],
+    breath:'举起呼气，下放吸气。',
+    mistakes:['耸肩，斜方肌代偿','身体甩动借力','手抬得太高超过肩','用大重量做爆发甩举'],
+    alts:[['器械侧平举','轨迹固定，孤立中束','lateral'],['龙门架侧平举','全程张力更均匀','lateral'],['轻量哑铃侧平举','小重量多次数','lateral']]},
+   {id:'pushdown',name:'绳索下压',target:'肱三头',sets:'4组 × 12-15次',rest:'组间休息 60 秒',muscles:['三头'],
+    steps:['面对龙门架，握好直杆或绳索，大臂夹紧身体两侧','小臂下压，直到手臂完全伸直','顶端停顿挤压三头一秒','缓慢还原到小臂略高于水平'],
+    keys:['肘部位置固定，是唯一在动的关节','身体微前倾但不要前后晃','最后几组可以递减重量，把肌肉「榨干」','手腕保持中立，不压腕'],
+    breath:'下压呼气，还原吸气。',
+    mistakes:['肘部外张，练成夹胸','身体前倾借力','只做半程','下压速度过快甩动'],
+    alts:[['器械三头下压','轨迹固定，容易上手','pushdown'],['哑铃颈后臂屈伸','轻重量，单臂更集中','pushdown'],['史密斯窄距卧推','轨迹固定，兼顾三头','bench']]}
+  ]
+ },
+ pull:{
+  key:'pull',emoji:'🏋️',title:'拉日 · 背 后束 二头',focus:'主练：背阔肌 / 三角肌后束 / 肱二头',
+  warmup:['泡沫轴松解上背与背阔肌（每侧 30 秒）','弹力带肩胛激活：Y-T-W 各 10 次','轻重量高位下拉 2×12 热身组'],
+  stretch:['悬垂放松脊柱 30 秒','跪姿背阔肌拉伸 每侧 30 秒','二头贴墙拉伸 每侧 30 秒'],
+  exercises:[
+   {id:'pulldown',name:'高位下拉',target:'背阔肌 · 大圆肌 · 肱二头',sets:'4组 × 10-12次',rest:'组间休息 90 秒',muscles:['背','二头'],
+    steps:['坐稳，大腿固定好，双手宽握横杆','挺胸收腹，先「沉肩」再发力下拉','横杆拉至锁骨上方，感受背阔肌收缩','控制还原，直到手臂伸直、背阔肌拉长'],
+    keys:['下拉方向是「向下」，不是向后拉','肘部朝下朝内，贴近身体','不要后仰过大，躯干保持稳定','离心阶段慢一点，效果翻倍'],
+    breath:'下拉呼气，还原吸气。',
+    mistakes:['用身体后仰借力','耸肩','拉到胸下沿练成划船','还原时松掉肩膀'],
+    alts:[['对握高位下拉','肩部更友好','pulldown'],['辅助引体向上','配重助力，女生也能拉','pulldown'],['单臂高位下拉','单侧找背阔肌感觉','pulldown']]},
+   {id:'row',name:'坐姿划船（对握）',target:'背阔肌 · 菱形肌 · 斜方肌中束',sets:'4组 × 10-12次',rest:'组间休息 90 秒',muscles:['背'],
+    steps:['坐稳，双脚踩实踏板，膝盖微屈','挺胸收腹，把手柄拉向腹部方向','肩胛骨向后夹紧，停顿一秒','控制还原，直到手臂伸直'],
+    keys:['先「夹背」再「收手肘」，顺序不能反','躯干保持微后倾，不要大幅前后晃','手肘贴近身体向后拉','想象把手柄往肚脐方向拉'],
+    breath:'后拉呼气，还原吸气。',
+    mistakes:['弯腰弓背','身体前后大幅摆动','耸肩','拉到胸口变练胸'],
+    alts:[['胸托式器械划船','有胸垫支撑，最稳','row'],['单臂哑铃划船','单侧更好找感觉','one-arm-row'],['T杠划船（胸托版）','轨迹固定，容易上重量','row']]},
+   {id:'one-arm-row',name:'单臂哑铃划船',target:'背阔肌（单侧） · 菱形肌 · 大圆肌',sets:'3-4组 × 10-12次/侧',rest:'组间休息 60~90 秒',muscles:['背','二头'],
+    steps:['单膝、单手撑在凳上，背部平直与地面接近平行','另一手持哑铃自然下垂','将哑铃沿体侧拉向髋部方向','顶峰收缩一秒，缓慢下放'],
+    keys:['躯干全程稳定，不要扭转','拉到「髋部」，不是胸口','肘部贴身，肩胛后收带动','下放时感受背阔肌拉长'],
+    breath:'上拉呼气，下放吸气。',
+    mistakes:['身体旋转借力','弓背','耸肩','拉到胸口练成后束'],
+    alts:[['单臂坐姿划船','更稳定，重量可调','row'],['器械划船','轨迹固定','row'],['单臂高位下拉','练背阔肌外沿','pulldown']]},
+   {id:'face-pull',name:'绳索面拉',target:'三角肌后束 · 斜方肌中下束 · 肩袖',sets:'4组 × 12-15次',rest:'组间休息 60 秒',muscles:['肩','背'],
+    steps:['高位滑轮调到面部高度，双手握绳','向面部方向拉，肘部抬高并向外展开','拉到末端时双手分开至耳朵两侧','肩胛骨向后收紧，控制还原'],
+    keys:['大拇指向后旋转（肩外旋）','肘部永远高于手腕','重量宁轻勿重，找肩后束感觉','这是「护肩」动作，练背日必做'],
+    breath:'后拉呼气，还原吸气。',
+    mistakes:['重量太大靠腰拉','耸肩','拉到胸口变划船','肘低于手腕'],
+    alts:[['器械反向飞鸟','轨迹固定，后束更孤立','face-pull'],['俯身哑铃反向飞鸟','轻重量练后束','face-pull'],['龙门架面拉（轻重量）','低重量高次数找感觉','face-pull']]},
+   {id:'curl',name:'杠铃弯举',target:'肱二头',sets:'4组 × 10-12次',rest:'组间休息 60~90 秒',muscles:['二头'],
+    steps:['站姿握杠（略宽于肩），大臂夹紧身体','弯举杠铃，直到前臂接近垂直','顶峰收缩一秒','缓慢下放，到手臂微屈不锁死'],
+    keys:['肘部位置固定，别前后移动','身体不要后仰借力，核心收紧','离心慢放是长肌肉的关键','手腕保持中立'],
+    breath:'弯举呼气，下放吸气。',
+    mistakes:['身体后仰借力','耸肩','只做半程','下放太快甩动'],
+    alts:[['器械二头弯举','轨迹固定，借力少','curl'],['牧师凳弯举','孤立二头更彻底','curl'],['绳索弯举','全程张力不卸力','curl']]},
+   {id:'hammer-curl',name:'锤式弯举',target:'肱肌 · 肱桡肌 · 前臂',sets:'3-4组 × 12-15次',rest:'组间休息 60 秒',muscles:['二头'],
+    steps:['站姿双手对握哑铃（掌心相对）','大臂贴紧身体，弯举哑铃','顶端停顿，前臂与地面垂直','缓慢下放'],
+    keys:['手腕保持中立，不要旋转','肘部固定，不要往前飘','这个动作能加厚手臂侧面','控制离心，别甩'],
+    breath:'弯举呼气，下放吸气。',
+    mistakes:['手腕翻转借力','肘部前移','身体晃动','速度过快'],
+    alts:[['绳索锤式弯举','全程张力更恒定','hammer-curl'],['轻量哑铃锤式弯举','重量灵活','hammer-curl'],['反向弯举','更多前臂参与','hammer-curl']]}
+  ]
+ },
+ leg:{
+  key:'leg',emoji:'🍑',title:'腿日 · 股四头 腘绳肌 臀',focus:'主练：股四头肌 / 腘绳肌 / 臀大肌（臀腿特训版）',
+  warmup:['泡沫轴松解小腿、大腿前侧、臀部（各 30 秒）','脚踝激活：闭眼单腿站立（每侧 20 秒）— 谭成义同款','弹力带侧向行走 2×15，激活臀中肌','自重臀桥 2×15 + 空杆深蹲 2×12'],
+  stretch:['站姿股四头拉伸 每侧 30 秒','坐姿腘绳肌前屈 每侧 30 秒','鸽子式臀部拉伸 每侧 30 秒','弓步压小腿 每侧 30 秒'],
+  exercises:[
+   {id:'squat',name:'杠铃深蹲',target:'股四头肌 · 臀大肌 · 腘绳肌',sets:'5组 × 6-10次',rest:'组间休息 120~180 秒',muscles:['股四头','臀','腘绳肌'],
+    steps:['杠铃置于上背（低杠位更偏臀腿后侧），握杠收紧背部','双脚与肩同宽，脚尖微微外八','挺胸收腹，像坐椅子一样下蹲','蹲到大腿至少与地面平行，站起'],
+    keys:['膝盖与脚尖始终同方向，不内扣','全程核心绷紧，不弓腰','重心压在足中，脚跟不离地','深蹲是腿日「主项」，放第一个做'],
+    breath:'下蹲吸气，站起呼气。',
+    mistakes:['膝盖内扣','弓腰、撅屁股','脚跟离地','蹲太浅只做半程'],
+    alts:[['哈克深蹲','轨迹固定，对下背友好','squat'],['腿举','器械更稳，重量可调','leg-press'],['史密斯深蹲','轨迹固定更安全','squat']]},
+   {id:'rdl',name:'罗马尼亚硬拉',target:'腘绳肌 · 臀大肌 · 下背',sets:'4组 × 8-12次',rest:'组间休息 90~120 秒',muscles:['腘绳肌','臀'],
+    steps:['站姿握杠与肩同宽，膝盖微屈','髋部向后推，杠铃贴着大腿下滑','滑到小腿中上段，感受大腿后侧强烈拉伸','髋部发力前顶，回到站直'],
+    keys:['杠铃全程贴腿走，不离开身体','背部保持平直，不弓腰','膝盖角度基本不变，这是「髋铰链」不是深蹲','用髋顶起，不是用手拉'],
+    breath:'下放吸气，站起呼气。',
+    mistakes:['弓腰','杠离腿太远','做成深蹲（屈膝太多）','用腰硬拉'],
+    alts:[['器械腿弯举','孤立腘绳肌，容易找感觉','leg-curl'],['哑铃罗马尼亚硬拉','轻重量更好控制','rdl'],['史密斯罗马尼亚硬拉','轨迹固定更稳','rdl']]},
+   {id:'hip-thrust',name:'杠铃臀推',target:'臀大肌',sets:'4组 × 10-15次',rest:'组间休息 90 秒',muscles:['臀'],
+    steps:['上背靠在凳边，杠铃垫好护垫放在髋部','双脚踩实，脚距略宽于肩','髋部向上顶，直到躯干与大腿成一条直线','顶端用力夹臀一秒，缓慢下放'],
+    keys:['下巴微收，不要仰头','顶端骨盆微微后倾，才能「夹」到臀','全程脚跟着地发力','别把腰顶到反弓，用臀发力'],
+    breath:'顶起呼气，下放吸气。',
+    mistakes:['用腰顶，腰酸臀不酸','顶端不夹臀','脚距太宽/太窄','只做半程'],
+    alts:[['史密斯臀推','轨迹固定，上重量方便','hip-thrust'],['龙门架后踢腿','孤立臀大肌，女生友好','hip-thrust'],['器械臀桥','有专门的臀推器械更好','hip-thrust']]},
+   {id:'leg-press',name:'腿举',target:'股四头肌 · 臀大肌',sets:'4组 × 10-15次',rest:'组间休息 90 秒',muscles:['股四头','臀'],
+    steps:['坐稳，腰臀完全贴住靠垫','双脚与肩同宽踩在平台中部','解锁后屈膝下放，到 90° 左右','蹬起至膝盖微屈，不锁死'],
+    keys:['脚放高位更偏臀，放低位更偏大腿前侧','全程腰臀不离垫','膝盖与脚尖同方向','蹬起别「啪」地锁死膝盖'],
+    breath:'下放吸气，蹬起呼气。',
+    mistakes:['锁死膝盖','腰部离垫','幅度太小','膝盖内扣'],
+    alts:[['哈克深蹲','更接近深蹲，下背更轻松','squat'],['史密斯深蹲','轨迹固定更安全','squat'],['坐姿腿屈伸','孤立股四头，重量可调','leg-press']]},
+   {id:'leg-curl',name:'俯卧腿弯举',target:'腘绳肌',sets:'4组 × 10-15次',rest:'组间休息 60~90 秒',muscles:['腘绳肌'],
+    steps:['俯卧器械，滚垫放在脚踝上方','勾住脚，将小腿弯起','弯到大腿后侧完全收缩，停顿一秒','缓慢还原，直到大腿后侧拉长'],
+    keys:['髋部始终贴住垫子，别抬起来','顶峰挤压，别靠惯性甩','离心放慢，效果更好','重量宁轻勿重，感受后侧发力'],
+    breath:'弯起呼气，还原吸气。',
+    mistakes:['髋部抬起借力','半程','速度过快','重量太大甩动'],
+    alts:[['坐姿腿弯举','角度不同，刺激更全面','leg-curl'],['单腿腿弯举','纠正左右不平衡','leg-curl'],['站姿单腿弯举','单侧更集中','leg-curl']]},
+   {id:'calf-raise',name:'站姿提踵',target:'小腿三头肌',sets:'4组 × 12-20次',rest:'组间休息 60 秒',muscles:['小腿'],
+    steps:['前脚掌踩在踏板上，脚跟下沉到最低点','踮起脚尖到最高点，停顿一秒','缓慢下放，让小腿充分拉长'],
+    keys:['幅度完整：底部拉伸、顶部停顿','全程膝盖微屈，不锁死','下放慢于踮起','放在训练最后收尾，榨干小腿'],
+    breath:'踮起呼气，下放吸气。',
+    mistakes:['只做半程','速度过快','膝盖过度弯曲代偿','脚跟没下沉拉伸'],
+    alts:[['坐姿提踵','更轻松，偏小腿内侧','calf-raise'],['史密斯提踵','上重量更稳定','calf-raise'],['单腿站姿提踵','负重不变刺激加倍','calf-raise']]}
+  ]
+ }
+};
+const SVG={skin:'#FCD3C0',skinD:'#F3BEA2',top:'#FFB9D6',topD:'#F599C0',short:'#FF8FB8',shortD:'#F47DA6',hair:'#7A4E3F',bar:'#A8B3BF',barD:'#8796A5',plate:'#6F8190',plateD:'#5A6A77',plate2:'#D9A6B8',wood:'#E8B98A',metal:'#C8D2DC',cream:'#FFF6EC',pink:'#FF9EBB',rope:'#F7A8C0'};
+function P(pts){return pts.map(p=>p.join(',')).join(' ')}
+function L(pts,c,w,op){return `<polyline points="${P(pts)}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"${op?` opacity="${op}"`:''}/>`}
+function C(x,y,r,f,op){return `<circle cx="${x}" cy="${y}" r="${r}" fill="${f}"${op?` opacity="${op}"`:''}/>`}
+function E(x,y,rx,ry,f,op){return `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${f}"${op?` opacity="${op}"`:''}/>`}
+function R(x,y,w,h,rx,f,op){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${f}"${op?` opacity="${op}"`:''}/>`}
+function bar(x1,x2,y){let s=`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${SVG.bar}" stroke-width="5" stroke-linecap="round"/>`;const ps=[SVG.plate,SVG.plateD,SVG.plate2];for(let i=0;i<3;i++){s+=`<rect x="${x1+5+i*4}" y="${y-10}" width="3.5" height="20" rx="1.6" fill="${ps[i]}"/>`;s+=`<rect x="${x2-5-i*4-3.5}" y="${y-10}" width="3.5" height="20" rx="1.6" fill="${ps[i]}"/>`;}return s}
+function db(x,y,vert){if(vert){return `<line x1="${x}" y1="${y-18}" x2="${x}" y2="${y+18}" stroke="${SVG.metal}" stroke-width="5" stroke-linecap="round"/>`+R(x-9,y-24,6,7,2,SVG.plate)+R(x+3,y-24,6,7,2,SVG.plate)+R(x-9,y+17,6,7,2,SVG.plate)+R(x+3,y+17,6,7,2,SVG.plate)}return `<line x1="${x-18}" y1="${y}" x2="${x+18}" y2="${y}" stroke="${SVG.metal}" stroke-width="5" stroke-linecap="round"/>`+R(x-24,y-8,7,6,2,SVG.plate)+R(x-24,y+2,7,6,2,SVG.plate)+R(x+17,y-8,7,6,2,SVG.plate)+R(x+17,y+2,7,6,2,SVG.plate)}
+function bench(x1,x2,topY){return R(x1,topY-5,x2-x1,6,3,SVG.cream)+L([[x1+8,topY+1],[x1+5,175]],SVG.metal,5)+L([[x2-8,topY+1],[x2-5,175]],SVG.metal,5)}
+function ground(){return L([[18,175],[222,175]],'#FFD3E2',3)}
+function svgWrap(inner){return `<svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">${inner}</svg>`}
+function figFrame(st,start,end){return svgWrap(ground()+st+`<g class="ps">${start}</g><g class="pe">${end}</g>`+`<text class="lb-ps" x="12" y="20" font-size="11" font-weight="700" fill="#D98AA8" font-family="'Microsoft YaHei',sans-serif">起点</text>`+`<text class="lb-pe" x="228" y="20" text-anchor="end" font-size="11" font-weight="700" fill="#D98AA8" font-family="'Microsoft YaHei',sans-serif">终点</text>`)}
+function char(s){
+ const o=[];
+ if(s.farLeg)o.push(L(s.farLeg,SVG.skinD,9));
+ o.push(L(s.leg,SVG.skin,10));
+ if(s.leg2)o.push(L(s.leg2,SVG.skin,10));
+ const hx=s.hp[0],hy=s.hp[1],k=s.leg[1];
+ const dx=k[0]-hx,dy=k[1]-hy,d=Math.hypot(dx,dy)||1;
+ const mx=hx+dx/d*19,my=hy+dy/d*19;
+ o.push(L([[hx,hy],[mx,my]],SVG.short,13));
+ o.push(C(hx,hy,7.5,SVG.short));
+ o.push(L([s.sh,s.hp],SVG.top,15));
+ if(s.farArm)o.push(L(s.farArm,SVG.skinD,7));
+ if(s.arm)o.push(L(s.arm,SVG.skin,7.5));
+ if(s.arm2)o.push(L(s.arm2,SVG.skin,7.5));
+ const cx=s.head[0],cy=s.head[1];
+ o.push(C(cx,cy,11,SVG.skin));
+ o.push(`<path d="M ${cx-11} ${cy-2} A 11 11 0 0 1 ${cx+11} ${cy-2}" fill="none" stroke="${SVG.hair}" stroke-width="5" stroke-linecap="round"/>`);
+ const dir=s.dir||'f';
+ let bx=cx,by=cy-12;
+ if(dir==='r'){bx=cx+10;by=cy-6}else if(dir==='l'){bx=cx-10;by=cy-6}
+ o.push(C(bx,by,5,SVG.hair));
+ const dark='#5A4038';
+ if(dir==='f'){
+  o.push(`<path d="M ${cx-5.5} ${cy-1} q 2.2 -3 4.4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+  o.push(`<path d="M ${cx+1.1} ${cy-1} q 2.2 -3 4.4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+  o.push(E(cx-7,cy+3.2,3,1.8,'rgba(255,138,160,.55)'));
+  o.push(E(cx+7,cy+3.2,3,1.8,'rgba(255,138,160,.55)'));
+  o.push(`<path d="M ${cx-2} ${cy+4.6} q 2 2.2 4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+ }else if(dir==='r'){
+  o.push(`<path d="M ${cx+1.5} ${cy-1.5} q 2.2 -3 4.4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+  o.push(E(cx+5.5,cy+2.5,3,1.8,'rgba(255,138,160,.55)'));
+  o.push(`<path d="M ${cx+3.5} ${cy+4.5} q 2 2 4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+ }else if(dir==='l'){
+  o.push(`<path d="M ${cx-6} ${cy-1.5} q 2.2 -3 4.4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+  o.push(E(cx-5.5,cy+2.5,3,1.8,'rgba(255,138,160,.55)'));
+  o.push(`<path d="M ${cx-7.5} ${cy+4.5} q 2 2 4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+ }else if(dir==='u'){
+  o.push(`<path d="M ${cx-4} ${cy-4.5} q 2 -2.6 4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+  o.push(`<path d="M ${cx+3} ${cy-4.5} q 2 -2.6 4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+  o.push(E(cx-7,cy,3,1.8,'rgba(255,138,160,.55)'));
+  o.push(E(cx+7,cy,3,1.8,'rgba(255,138,160,.55)'));
+  o.push(`<path d="M ${cx-2} ${cy+1.6} q 2 2 4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+ }else{
+  o.push(`<path d="M ${cx-4} ${cy+0.5} q 2 -2.6 4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+  o.push(`<path d="M ${cx+3} ${cy+0.5} q 2 -2.6 4 0" fill="none" stroke="${dark}" stroke-width="1.7" stroke-linecap="round"/>`);
+  o.push(E(cx-7,cy+3.5,3,1.8,'rgba(255,138,160,.55)'));
+  o.push(E(cx+7,cy+3.5,3,1.8,'rgba(255,138,160,.55)'));
+ }
+ return o.join('');
+}
+function figBench(){const st=bench(80,175,132);const start=char({head:[98,130],dir:'u',sh:[118,130],hp:[150,130],leg:[[150,130],[158,112],[166,172]],arm:[[118,130],[108,102],[118,86]],arm2:[[118,130],[128,102],[128,86]]})+bar(84,182,88);const end=char({head:[98,130],dir:'u',sh:[118,130],hp:[150,130],leg:[[150,130],[158,112],[166,172]],arm:[[118,130],[122,104],[124,78]],arm2:[[118,130],[128,104],[130,78]]})+bar(84,182,76);return figFrame(st,start,end)}
+function figIncline(){const st=`<line x1="132" y1="142" x2="102" y2="84" stroke="#FFF6EC" stroke-width="16" stroke-linecap="round"/>`+R(124,138,54,8,4,SVG.cream)+L([[136,146],[136,175]],SVG.metal,5)+L([[172,146],[172,175]],SVG.metal,5);const start=char({head:[98,80],dir:'u',sh:[114,104],hp:[146,134],leg:[[146,134],[156,112],[164,172]],arm:[[114,104],[100,90],[108,82]],arm2:[[114,104],[128,90],[120,82]]})+db(108,82)+db(120,82);const end=char({head:[98,80],dir:'u',sh:[114,104],hp:[146,134],leg:[[146,134],[156,112],[164,172]],arm:[[114,104],[116,78],[118,56]],arm2:[[114,104],[124,78],[126,56]]})+db(118,56)+db(126,56);return figFrame(st,start,end)}
+function figDips(){const st=L([[86,110],[86,175]],SVG.metal,7)+L([[154,110],[154,175]],SVG.metal,7)+R(72,104,96,6,4,SVG.metal)+R(72,112,96,6,4,SVG.metal);const start=char({head:[120,122],dir:'f',sh:[120,132],hp:[120,152],leg:[[120,152],[114,168],[114,175]],leg2:[[120,152],[126,168],[126,175]],arm:[[120,132],[108,130],[112,112]],arm2:[[120,132],[132,130],[128,112]]});const end=char({head:[120,96],dir:'f',sh:[120,106],hp:[120,126],leg:[[120,126],[114,166],[114,175]],leg2:[[120,126],[126,166],[126,175]],arm:[[120,106],[112,109],[112,112]],arm2:[[120,106],[128,109],[128,112]]});return figFrame(st,start,end)}
+function figShoulderPress(){const st=R(95,150,50,8,4,SVG.cream)+R(110,90,11,62,5,SVG.cream)+L([[105,158],[105,175]],SVG.metal,5)+L([[135,158],[135,175]],SVG.metal,5);const start=char({head:[120,58],dir:'f',sh:[120,88],hp:[120,132],leg:[[120,132],[108,160],[110,172]],leg2:[[120,132],[132,160],[130,172]],arm:[[120,88],[103,98],[108,76]],arm2:[[120,88],[137,98],[132,76]]})+db(108,76)+db(132,76);const end=char({head:[120,58],dir:'f',sh:[120,88],hp:[120,132],leg:[[120,132],[108,160],[110,172]],leg2:[[120,132],[132,160],[130,172]],arm:[[120,88],[116,70],[122,46]],arm2:[[120,88],[128,70],[134,46]]})+db(122,46)+db(134,46);return figFrame(st,start,end)}
+function figLateral(){const st='';const start=char({head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[104,82],[92,98]],arm2:[[120,68],[136,82],[148,98]]})+db(92,98)+db(148,98);const end=char({head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[88,70],[72,58]],arm2:[[120,68],[152,70],[168,58]]})+db(72,58)+db(168,58);return figFrame(st,start,end)}
+function figPushdown(){const st=R(18,40,78,9,4,SVG.metal)+R(20,49,8,126,4,SVG.metal)+R(10,172,28,6,3,SVG.metal)+C(26,52,5,SVG.barD);const start=char({head:[120,42],dir:'f',sh:[120,70],hp:[120,114],leg:[[120,114],[118,152],[118,172]],leg2:[[120,114],[122,152],[122,172]],arm:[[120,70],[112,94],[116,118]],arm2:[[120,70],[128,94],[124,118]]})+L([[26,52],[116,118]],SVG.rope,4)+L([[26,52],[124,118]],SVG.rope,4)+C(120,118,3,SVG.pink);const end=char({head:[120,42],dir:'f',sh:[120,70],hp:[120,114],leg:[[120,114],[118,152],[118,172]],leg2:[[120,114],[122,152],[122,172]],arm:[[120,70],[114,96],[112,140]],arm2:[[120,70],[126,96],[128,140]]})+L([[26,52],[112,140]],SVG.rope,4)+L([[26,52],[128,140]],SVG.rope,4)+C(120,140,3,SVG.pink);return figFrame(st,start,end)}
+function figPulldown(){const st=R(74,32,92,9,4,SVG.metal)+R(114,41,8,130,4,SVG.metal)+L([[84,32],[106,58]],SVG.metal,7)+L([[156,32],[134,58]],SVG.metal,7)+C(106,58,5,SVG.barD)+C(134,58,5,SVG.barD)+R(96,152,48,8,4,SVG.cream)+R(102,128,36,10,5,SVG.pink)+L([[106,160],[106,175]],SVG.metal,5)+L([[134,160],[134,175]],SVG.metal,5);const start=char({head:[120,80],dir:'f',sh:[120,108],hp:[120,136],leg:[[120,136],[116,158],[116,172]],leg2:[[120,136],[124,158],[124,172]],arm:[[120,108],[108,84],[112,62]],arm2:[[120,108],[132,84],[128,62]]})+L([[106,58],[98,62]],SVG.rope,3)+L([[134,58],[142,62]],SVG.rope,3)+`<line x1="98" y1="62" x2="142" y2="62" stroke="${SVG.bar}" stroke-width="5" stroke-linecap="round"/>`;const end=char({head:[120,80],dir:'f',sh:[120,108],hp:[120,136],leg:[[120,136],[116,158],[116,172]],leg2:[[120,136],[124,158],[124,172]],arm:[[120,108],[104,112],[112,92]],arm2:[[120,108],[136,112],[128,92]]})+L([[106,58],[100,92]],SVG.rope,3)+L([[134,58],[140,92]],SVG.rope,3)+`<line x1="100" y1="92" x2="140" y2="92" stroke="${SVG.bar}" stroke-width="5" stroke-linecap="round"/>`;return figFrame(st,start,end)}
+function figRow(){const st=R(28,64,8,110,4,SVG.metal)+R(14,172,36,6,3,SVG.metal)+R(36,136,7,38,4,SVG.metal)+C(34,72,5,SVG.barD)+R(112,138,52,8,4,SVG.cream)+L([[122,146],[122,175]],SVG.metal,5)+L([[154,146],[154,175]],SVG.metal,5);const start=char({head:[118,60],dir:'l',sh:[118,90],hp:[126,132],leg:[[126,132],[98,152],[50,150]],arm:[[118,90],[92,100],[60,112]],farArm:[[118,90],[98,96],[70,110]]})+L([[34,72],[52,112]],SVG.rope,3)+`<line x1="52" y1="112" x2="68" y2="112" stroke="${SVG.bar}" stroke-width="4" stroke-linecap="round"/>`;const end=char({head:[118,60],dir:'l',sh:[118,90],hp:[126,132],leg:[[126,132],[98,152],[50,150]],arm:[[118,90],[96,112],[106,118]],farArm:[[118,90],[102,104],[112,110]]})+L([[34,72],[98,118]],SVG.rope,3)+`<line x1="98" y1="118" x2="114" y2="118" stroke="${SVG.bar}" stroke-width="4" stroke-linecap="round"/>`;return figFrame(st,start,end)}
+function figOneArmRow(){const st=bench(62,136,128);const start=char({head:[98,80],dir:'r',sh:[104,102],hp:[128,140],leg:[[128,140],[110,132],[94,136]],farLeg:[[128,140],[150,156],[160,172]],arm:[[104,102],[92,116],[84,130]],farArm:[[104,102],[96,108],[90,112]]})+db(76,134,true);const end=char({head:[98,80],dir:'r',sh:[104,102],hp:[128,140],leg:[[128,140],[110,132],[94,136]],farLeg:[[128,140],[150,156],[160,172]],arm:[[104,102],[84,98],[72,90]],farArm:[[104,102],[92,104],[86,100]]})+db(72,90,true);return figFrame(st,start,end)}
+function figFacePull(){const st=R(58,34,124,9,4,SVG.metal)+R(116,43,8,132,4,SVG.metal)+C(120,42,5,SVG.barD);const start=char({head:[120,58],dir:'f',sh:[120,86],hp:[120,130],leg:[[120,130],[118,152],[118,172]],leg2:[[120,130],[122,152],[122,172]],arm:[[120,86],[96,62],[92,44]],arm2:[[120,86],[144,62],[148,44]]})+L([[120,42],[92,44]],SVG.rope,3.5)+L([[120,42],[148,44]],SVG.rope,3.5);const end=char({head:[120,58],dir:'f',sh:[120,86],hp:[120,130],leg:[[120,130],[118,152],[118,172]],leg2:[[120,130],[122,152],[122,172]],arm:[[120,86],[92,94],[108,74]],arm2:[[120,86],[148,94],[132,74]]})+L([[120,42],[108,74]],SVG.rope,3.5)+L([[120,42],[132,74]],SVG.rope,3.5);return figFrame(st,start,end)}
+function figCurl(){const st='';const start=char({head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[112,92],[110,112]],arm2:[[120,68],[128,92],[130,112]]})+bar(88,152,112);const end=char({head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[110,92],[110,72]],arm2:[[120,68],[130,92],[130,72]]})+bar(88,152,72);return figFrame(st,start,end)}
+function figHammerCurl(){const st='';const start=char({head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[110,92],[108,112]],arm2:[[120,68],[130,92],[132,112]]})+db(108,112,true)+db(132,112,true);const end=char({head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[110,92],[108,74]],arm2:[[120,68],[130,92],[132,74]]})+db(108,74,true)+db(132,74,true);return figFrame(st,start,end)}
+function figSquat(){const st='';const start=char({head:[116,34],dir:'r',sh:[116,60],hp:[116,112],leg:[[116,112],[116,152],[116,172]],farLeg:[[108,112],[108,152],[108,172]],arm:[[116,60],[102,66],[98,54]],farArm:[[116,60],[106,64],[102,52]]})+bar(86,176,54);const end=char({head:[112,76],dir:'r',sh:[112,100],hp:[116,146],leg:[[116,146],[138,156],[116,172]],farLeg:[[108,146],[126,154],[108,172]],arm:[[112,100],[100,106],[96,96]],farArm:[[112,100],[106,104],[102,94]]})+bar(88,174,94);return figFrame(st,start,end)}
+function figRdl(){const st='';const start=char({head:[114,36],dir:'r',sh:[114,62],hp:[114,112],leg:[[114,112],[114,152],[114,172]],farLeg:[[106,112],[106,152],[106,172]],arm:[[114,62],[110,86],[110,108]],farArm:[[114,62],[106,84],[106,106]]})+bar(86,176,110);const end=char({head:[98,64],dir:'r',sh:[98,90],hp:[114,132],leg:[[114,132],[122,150],[114,172]],farLeg:[[106,132],[114,150],[106,172]],arm:[[98,90],[98,112],[98,148]],farArm:[[98,90],[92,110],[92,146]]})+bar(72,160,150);return figFrame(st,start,end)}
+function figHipThrust(){const st=bench(64,136,128);const start=char({head:[82,122],dir:'u',sh:[92,124],hp:[118,156],leg:[[118,156],[138,158],[146,172]],farLeg:[[112,156],[130,156],[140,172]],arm:[[92,124],[74,132],[62,136]],farArm:[[92,124],[80,130],[70,134]]})+bar(104,174,154);const end=char({head:[82,120],dir:'u',sh:[92,124],hp:[116,126],leg:[[116,126],[136,148],[146,172]],farLeg:[[110,126],[128,146],[140,172]],arm:[[92,124],[74,132],[62,136]],farArm:[[92,124],[80,130],[70,134]]})+bar(104,174,124);return figFrame(st,start,end)}
+function figLegPress(){const st=R(52,78,9,58,5,SVG.cream)+R(62,134,40,9,4,SVG.cream)+L([[70,143],[70,175]],SVG.metal,5)+L([[96,143],[96,175]],SVG.metal,5)+R(174,84,8,48,4,SVG.metal)+L([[178,132],[178,172]],SVG.metal,5)+R(166,172,24,6,3,SVG.metal);const start=char({head:[76,66],dir:'r',sh:[78,92],hp:[88,128],leg:[[88,128],[128,118],[178,104]],farLeg:[[84,128],[122,116],[174,102]],arm:[[78,92],[64,108],[56,118]],farArm:[[78,92],[70,104],[64,116]]});const end=char({head:[76,66],dir:'r',sh:[78,92],hp:[88,128],leg:[[88,128],[150,132],[180,106]],farLeg:[[84,128],[146,130],[176,104]],arm:[[78,92],[64,108],[56,118]],farArm:[[78,92],[70,104],[64,116]]});return figFrame(st,start,end)}
+function figLegCurl(){const st=bench(64,168,120)+R(156,110,10,20,4,SVG.pink);const start=char({head:[74,120],dir:'d',sh:[94,120],hp:[124,120],leg:[[124,120],[146,128],[166,158]],arm:[[94,120],[84,128],[76,132]]})+C(166,158,5,SVG.pink);const end=char({head:[74,120],dir:'d',sh:[94,120],hp:[124,120],leg:[[124,120],[146,126],[166,112]],arm:[[94,120],[84,128],[76,132]]})+C(166,112,5,SVG.pink);return figFrame(st,start,end)}
+function figCalfRaise(){const st=R(88,158,58,16,4,SVG.wood);const start=char({head:[116,36],dir:'r',sh:[116,62],hp:[116,110],leg:[[116,110],[114,150],[114,152]],farLeg:[[108,110],[106,148],[106,150]],arm:[[116,62],[104,68],[100,56]],farArm:[[116,62],[108,66],[104,54]]})+L([[114,152],[106,157]],SVG.skin,6)+L([[106,150],[99,155]],SVG.skinD,6)+bar(86,176,54);const end=char({head:[116,26],dir:'r',sh:[116,50],hp:[116,98],leg:[[116,98],[112,136],[112,138]],farLeg:[[108,98],[104,134],[104,136]],arm:[[116,50],[104,56],[100,44]],farArm:[[116,50],[108,54],[104,42]]})+L([[112,138],[105,145]],SVG.skin,6)+L([[104,136],[98,142]],SVG.skinD,6)+bar(86,176,44);return figFrame(st,start,end)}
+function heroFig(){const c=char({head:[120,70],dir:'f',sh:[120,98],hp:[120,140],leg:[[120,140],[118,158],[118,172]],leg2:[[120,140],[122,158],[122,172]],arm:[[120,98],[98,88],[90,62]],arm2:[[120,98],[142,88],[150,62]]});return svgWrap(ground()+c+db(90,62)+db(150,62)+`<text x="38" y="66" font-size="18">💗</text><text x="178" y="54" font-size="16">✨</text><text x="152" y="170" font-size="15">💖</text>`)}
+function kuromiFig(){return `<svg viewBox="0 0 160 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><path d="M42 108 Q42 44 80 36 Q118 44 118 108 Q118 140 80 144 Q42 140 42 108 Z" fill="#26262F"/><path d="M45 62 L34 20 L66 47 Z" fill="#26262F"/><path d="M115 62 L126 20 L94 47 Z" fill="#26262F"/><path d="M48 58 L41 30 L62 48 Z" fill="#FF87BC"/><path d="M112 58 L119 30 L98 48 Z" fill="#FF87BC"/><ellipse cx="80" cy="100" rx="35" ry="28" fill="#FDF6F8"/><ellipse cx="66" cy="98" rx="7" ry="9" fill="#23232F"/><ellipse cx="94" cy="98" rx="7" ry="9" fill="#23232F"/><circle cx="69" cy="94" r="2" fill="#fff"/><circle cx="97" cy="94" r="2" fill="#fff"/><path d="M77 107 q3 2.6 6 0" fill="none" stroke="#23232F" stroke-width="2" stroke-linecap="round"/><g transform="translate(80 52)"><circle r="12" fill="#FDF6F8"/><circle cx="-4" cy="-2" r="2.2" fill="#23232F"/><circle cx="4" cy="-2" r="2.2" fill="#23232F"/><path d="M-3 4 q3 3 6 0" fill="none" stroke="#23232F" stroke-width="1.8" stroke-linecap="round"/></g><path d="M60 146 q20 -16 40 0 l-5 22 H65 Z" fill="#26262F"/><path d="M70 132 q10 -8 20 0" fill="none" stroke="#FF87BC" stroke-width="2.5" stroke-linecap="round"/></svg>`}
+function kittyFig(){return `<svg viewBox="0 0 160 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><path d="M44 62 L32 22 L68 46 Z" fill="#FDF6F8"/><path d="M116 62 L128 22 L92 46 Z" fill="#FDF6F8"/><path d="M46 56 L39 32 L62 47 Z" fill="#FFC2DA"/><path d="M114 56 L121 32 L98 47 Z" fill="#FFC2DA"/><ellipse cx="80" cy="92" rx="47" ry="40" fill="#FDF6F8"/><g transform="translate(116 30)"><circle cx="-7" cy="0" r="7" fill="#FF3B5C"/><circle cx="7" cy="0" r="7" fill="#FF3B5C"/><circle cx="0" cy="2" r="4.5" fill="#C94F6D"/></g><ellipse cx="63" cy="86" rx="4" ry="6" fill="#23232F"/><ellipse cx="97" cy="86" rx="4" ry="6" fill="#23232F"/><ellipse cx="80" cy="97" rx="3.6" ry="2.6" fill="#FFD56B"/><path d="M36 88 L52 91" stroke="#23232F" stroke-width="1.6" stroke-linecap="round"/><path d="M36 98 L52 97" stroke="#23232F" stroke-width="1.6" stroke-linecap="round"/><path d="M124 88 L108 91" stroke="#23232F" stroke-width="1.6" stroke-linecap="round"/><path d="M124 98 L108 97" stroke="#23232F" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="80" cy="142" rx="35" ry="24" fill="#FDF6F8"/><path d="M58 146 q22 12 44 0" fill="none" stroke="#FFC2DA" stroke-width="3" stroke-linecap="round"/></svg>`}
+function themeHero(){$('#heroKuromi').innerHTML=kuromiFig();$('#heroKitty').innerHTML=kittyFig()}
+const FIGS={bench:figBench,incline:figIncline,dips:figDips,'shoulder-press':figShoulderPress,lateral:figLateral,pushdown:figPushdown,pulldown:figPulldown,row:figRow,'one-arm-row':figOneArmRow,'face-pull':figFacePull,curl:figCurl,'hammer-curl':figHammerCurl,squat:figSquat,rdl:figRdl,'hip-thrust':figHipThrust,'leg-press':figLegPress,'leg-curl':figLegCurl,'calf-raise':figCalfRaise};
+const ANIM={
+bench:{s0:{head:[98,130],dir:'u',sh:[118,130],hp:[150,130],leg:[[150,130],[158,112],[166,172]],arm:[[118,130],[108,102],[118,86]],arm2:[[118,130],[128,102],[128,86]]},s1:{head:[98,130],dir:'u',sh:[118,130],hp:[150,130],leg:[[150,130],[158,112],[166,172]],arm:[[118,130],[122,104],[124,78]],arm2:[[118,130],[128,104],[130,78]]},st:bench(80,175,132),eq:{kind:'bar',x1:84,x2:182,yRef:'wrists'}},
+incline:{s0:{head:[98,80],dir:'u',sh:[114,104],hp:[146,134],leg:[[146,134],[156,112],[164,172]],arm:[[114,104],[100,90],[108,82]],arm2:[[114,104],[128,90],[120,82]]},s1:{head:[98,80],dir:'u',sh:[114,104],hp:[146,134],leg:[[146,134],[156,112],[164,172]],arm:[[114,104],[116,78],[118,56]],arm2:[[114,104],[124,78],[126,56]]},st:`<line x1="132" y1="142" x2="102" y2="84" stroke="#FFF6EC" stroke-width="16" stroke-linecap="round"/>`+R(124,138,54,8,4,SVG.cream)+L([[136,146],[136,175]],SVG.metal,5)+L([[172,146],[172,175]],SVG.metal,5),eq:{kind:'db'}},
+dips:{s0:{head:[120,122],dir:'f',sh:[120,132],hp:[120,152],leg:[[120,152],[114,168],[114,175]],leg2:[[120,152],[126,168],[126,175]],arm:[[120,132],[108,130],[112,112]],arm2:[[120,132],[132,130],[128,112]]},s1:{head:[120,96],dir:'f',sh:[120,106],hp:[120,126],leg:[[120,126],[114,166],[114,175]],leg2:[[120,126],[126,166],[126,175]],arm:[[120,106],[112,109],[112,112]],arm2:[[120,106],[128,109],[128,112]]},st:L([[86,110],[86,175]],SVG.metal,7)+L([[154,110],[154,175]],SVG.metal,7)+R(72,104,96,6,4,SVG.metal)+R(72,112,96,6,4,SVG.metal),eq:{kind:'none'}},
+'shoulder-press':{s0:{head:[120,58],dir:'f',sh:[120,88],hp:[120,132],leg:[[120,132],[108,160],[110,172]],leg2:[[120,132],[132,160],[130,172]],arm:[[120,88],[103,98],[108,76]],arm2:[[120,88],[137,98],[132,76]]},s1:{head:[120,58],dir:'f',sh:[120,88],hp:[120,132],leg:[[120,132],[108,160],[110,172]],leg2:[[120,132],[132,160],[130,172]],arm:[[120,88],[116,70],[122,46]],arm2:[[120,88],[128,70],[134,46]]},st:R(95,150,50,8,4,SVG.cream)+R(110,90,11,62,5,SVG.cream)+L([[105,158],[105,175]],SVG.metal,5)+L([[135,158],[135,175]],SVG.metal,5),eq:{kind:'db'}},
+lateral:{s0:{head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[104,82],[92,98]],arm2:[[120,68],[136,82],[148,98]]},s1:{head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[88,70],[72,58]],arm2:[[120,68],[152,70],[168,58]]},st:'',eq:{kind:'db'}},
+pushdown:{s0:{head:[120,42],dir:'f',sh:[120,70],hp:[120,114],leg:[[120,114],[118,152],[118,172]],leg2:[[120,114],[122,152],[122,172]],arm:[[120,70],[112,94],[116,118]],arm2:[[120,70],[128,94],[124,118]]},s1:{head:[120,42],dir:'f',sh:[120,70],hp:[120,114],leg:[[120,114],[118,152],[118,172]],leg2:[[120,114],[122,152],[122,172]],arm:[[120,70],[114,96],[112,140]],arm2:[[120,70],[126,96],[128,140]]},st:R(18,40,78,9,4,SVG.metal)+R(20,49,8,126,4,SVG.metal)+R(10,172,28,6,3,SVG.metal)+C(26,52,5,SVG.barD),eq:{kind:'rope2',pulley:[26,52]}},
+pulldown:{s0:{head:[120,80],dir:'f',sh:[120,108],hp:[120,136],leg:[[120,136],[116,158],[116,172]],leg2:[[120,136],[124,158],[124,172]],arm:[[120,108],[108,84],[112,62]],arm2:[[120,108],[132,84],[128,62]]},s1:{head:[120,80],dir:'f',sh:[120,108],hp:[120,136],leg:[[120,136],[116,158],[116,172]],leg2:[[120,136],[124,158],[124,172]],arm:[[120,108],[104,112],[112,92]],arm2:[[120,108],[136,112],[128,92]]},st:R(74,32,92,9,4,SVG.metal)+R(114,41,8,130,4,SVG.metal)+L([[84,32],[106,58]],SVG.metal,7)+L([[156,32],[134,58]],SVG.metal,7)+C(106,58,5,SVG.barD)+C(134,58,5,SVG.barD)+R(96,152,48,8,4,SVG.cream)+R(102,128,36,10,5,SVG.pink)+L([[106,160],[106,175]],SVG.metal,5)+L([[134,160],[134,175]],SVG.metal,5),eq:{kind:'pulldownBar',pulleys:[[106,58],[134,58]],x1:100,x2:140}},
+row:{s0:{head:[118,60],dir:'l',sh:[118,90],hp:[126,132],leg:[[126,132],[98,152],[50,150]],arm:[[118,90],[92,100],[60,112]],farArm:[[118,90],[98,96],[70,110]]},s1:{head:[118,60],dir:'l',sh:[118,90],hp:[126,132],leg:[[126,132],[98,152],[50,150]],arm:[[118,90],[96,112],[106,118]],farArm:[[118,90],[102,104],[112,110]]},st:R(28,64,8,110,4,SVG.metal)+R(14,172,36,6,3,SVG.metal)+R(36,136,7,38,4,SVG.metal)+C(34,72,5,SVG.barD)+R(112,138,52,8,4,SVG.cream)+L([[122,146],[122,175]],SVG.metal,5)+L([[154,146],[154,175]],SVG.metal,5),eq:{kind:'rowHandle',pulley:[34,72]}},
+'one-arm-row':{s0:{head:[98,80],dir:'r',sh:[104,102],hp:[128,140],leg:[[128,140],[110,132],[94,136]],farLeg:[[128,140],[150,156],[160,172]],arm:[[104,102],[92,116],[84,130]],farArm:[[104,102],[96,108],[90,112]]},s1:{head:[98,80],dir:'r',sh:[104,102],hp:[128,140],leg:[[128,140],[110,132],[94,136]],farLeg:[[128,140],[150,156],[160,172]],arm:[[104,102],[84,98],[72,90]],farArm:[[104,102],[92,104],[86,100]]},st:bench(62,136,128),eq:{kind:'dbSingle'}},
+'face-pull':{s0:{head:[120,58],dir:'f',sh:[120,86],hp:[120,130],leg:[[120,130],[118,152],[118,172]],leg2:[[120,130],[122,152],[122,172]],arm:[[120,86],[96,62],[92,44]],arm2:[[120,86],[144,62],[148,44]]},s1:{head:[120,58],dir:'f',sh:[120,86],hp:[120,130],leg:[[120,130],[118,152],[118,172]],leg2:[[120,130],[122,152],[122,172]],arm:[[120,86],[92,94],[108,74]],arm2:[[120,86],[148,94],[132,74]]},st:R(58,34,124,9,4,SVG.metal)+R(116,43,8,132,4,SVG.metal)+C(120,42,5,SVG.barD),eq:{kind:'rope2',pulley:[120,42]}},
+curl:{s0:{head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[112,92],[110,112]],arm2:[[120,68],[128,92],[130,112]]},s1:{head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[110,92],[110,72]],arm2:[[120,68],[130,92],[130,72]]},st:'',eq:{kind:'bar',x1:88,x2:152,yRef:'wrists'}},
+'hammer-curl':{s0:{head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[110,92],[108,112]],arm2:[[120,68],[130,92],[132,112]]},s1:{head:[120,40],dir:'f',sh:[120,68],hp:[120,112],leg:[[120,112],[118,152],[118,172]],leg2:[[120,112],[122,152],[122,172]],arm:[[120,68],[110,92],[108,74]],arm2:[[120,68],[130,92],[132,74]]},st:'',eq:{kind:'db',vert:true}},
+squat:{s0:{head:[116,34],dir:'r',sh:[116,60],hp:[116,112],leg:[[116,112],[116,152],[116,172]],farLeg:[[108,112],[108,152],[108,172]],arm:[[116,60],[102,66],[98,54]],farArm:[[116,60],[106,64],[102,52]]},s1:{head:[112,76],dir:'r',sh:[112,100],hp:[116,146],leg:[[116,146],[138,156],[116,172]],farLeg:[[108,146],[126,154],[108,172]],arm:[[112,100],[100,106],[96,96]],farArm:[[112,100],[106,104],[102,94]]},st:'',eq:{kind:'bar',x1:86,x2:176,yRef:'sh',off:-6}},
+rdl:{s0:{head:[114,36],dir:'r',sh:[114,62],hp:[114,112],leg:[[114,112],[114,152],[114,172]],farLeg:[[106,112],[106,152],[106,172]],arm:[[114,62],[110,86],[110,108]],farArm:[[114,62],[106,84],[106,106]]},s1:{head:[98,64],dir:'r',sh:[98,90],hp:[114,132],leg:[[114,132],[122,150],[114,172]],farLeg:[[106,132],[114,150],[106,172]],arm:[[98,90],[98,112],[98,148]],farArm:[[98,90],[92,110],[92,146]]},st:'',eq:{kind:'bar',x1:72,x2:160,yRef:'wrists'}},
+'hip-thrust':{s0:{head:[82,122],dir:'u',sh:[92,124],hp:[118,156],leg:[[118,156],[138,158],[146,172]],farLeg:[[112,156],[130,156],[140,172]],arm:[[92,124],[74,132],[62,136]],farArm:[[92,124],[80,130],[70,134]]},s1:{head:[82,120],dir:'u',sh:[92,124],hp:[116,126],leg:[[116,126],[136,148],[146,172]],farLeg:[[110,126],[128,146],[140,172]],arm:[[92,124],[74,132],[62,136]],farArm:[[92,124],[80,130],[70,134]]},st:bench(64,136,128),eq:{kind:'bar',x1:104,x2:174,yRef:'hp',off:-2}},
+'leg-press':{s0:{head:[76,66],dir:'r',sh:[78,92],hp:[88,128],leg:[[88,128],[128,118],[178,104]],farLeg:[[84,128],[122,116],[174,102]],arm:[[78,92],[64,108],[56,118]],farArm:[[78,92],[70,104],[64,116]]},s1:{head:[76,66],dir:'r',sh:[78,92],hp:[88,128],leg:[[88,128],[150,132],[180,106]],farLeg:[[84,128],[146,130],[176,104]],arm:[[78,92],[64,108],[56,118]],farArm:[[78,92],[70,104],[64,116]]},st:R(52,78,9,58,5,SVG.cream)+R(62,134,40,9,4,SVG.cream)+L([[70,143],[70,175]],SVG.metal,5)+L([[96,143],[96,175]],SVG.metal,5)+R(174,84,8,48,4,SVG.metal)+L([[178,132],[178,172]],SVG.metal,5)+R(166,172,24,6,3,SVG.metal),eq:{kind:'none'}},
+'leg-curl':{s0:{head:[74,120],dir:'d',sh:[94,120],hp:[124,120],leg:[[124,120],[146,128],[166,158]],arm:[[94,120],[84,128],[76,132]]},s1:{head:[74,120],dir:'d',sh:[94,120],hp:[124,120],leg:[[124,120],[146,126],[166,112]],arm:[[94,120],[84,128],[76,132]]},st:bench(64,168,120)+R(156,110,10,20,4,SVG.pink),eq:{kind:'anklePad'}},
+'calf-raise':{s0:{head:[116,36],dir:'r',sh:[116,62],hp:[116,110],leg:[[116,110],[114,150],[114,152]],farLeg:[[108,110],[106,148],[106,150]],arm:[[116,62],[104,68],[100,56]],farArm:[[116,62],[108,66],[104,54]]},s1:{head:[116,26],dir:'r',sh:[116,50],hp:[116,98],leg:[[116,98],[112,136],[112,138]],farLeg:[[108,98],[104,134],[104,136]],arm:[[116,50],[104,56],[100,44]],farArm:[[116,50],[108,54],[104,42]]},st:R(88,158,58,16,4,SVG.wood),eq:{kind:'calf'}}
+};
+function lerpN(a,b,t){return a+(b-a)*t}
+function lerpPt(a,b,t){return [lerpN(a[0],b[0],t),lerpN(a[1],b[1],t)]}
+function lerpSkel(s0,s1,t){const out={dir:s0.dir};['head','sh','hp','leg','leg2','farLeg','arm','arm2','farArm'].forEach(k=>{if(s0[k])out[k]=s0[k].map((p,i)=>lerpPt(p,s1[k][i],t))});return out}
+function eqRender(id,sk){const e=ANIM[id].eq;if(!e||e.kind==='none')return '';const w1=sk.arm?sk.arm[2]:[0,0],w2=sk.arm2?sk.arm2[2]:w1;const k=e.kind;
+ if(k==='bar'){const y=e.yRef==='wrists'?(w1[1]+w2[1])/2:e.yRef==='hp'?sk.hp[1]:e.yRef==='sh'?sk.sh[1]:sk.hp[1];return bar(e.x1,e.x2,y+(e.off||0))}
+ if(k==='db'){return db(w1[0],w1[1],e.vert)+db(w2[0],w2[1],e.vert)}
+ if(k==='dbSingle'){return db(w1[0],w1[1],true)}
+ if(k==='rope2'){const p=e.pulley,kx=(w1[0]+w2[0])/2,ky=(w1[1]+w2[1])/2;return L([[p[0],p[1]],[w1[0],w1[1]]],SVG.rope,4)+L([[p[0],p[1]],[w2[0],w2[1]]],SVG.rope,4)+C(kx,ky,3,SVG.pink)}
+ if(k==='pulldownBar'){const y=w1[1];return L([[e.pulleys[0][0],e.pulleys[0][1]],[e.x1,y]],SVG.rope,3)+L([[e.pulleys[1][0],e.pulleys[1][1]],[e.x2,y]],SVG.rope,3)+`<line x1="${e.x1}" y1="${y}" x2="${e.x2}" y2="${y}" stroke="${SVG.bar}" stroke-width="5" stroke-linecap="round"/>`}
+ if(k==='rowHandle'){const x=w1[0],y=w1[1];return L([[e.pulley[0],e.pulley[1]],[x-8,y]],SVG.rope,3)+`<line x1="${x-8}" y1="${y}" x2="${x+8}" y2="${y}" stroke="${SVG.bar}" stroke-width="4" stroke-linecap="round"/>`}
+ if(k==='anklePad'){const a=sk.leg[2];return C(a[0],a[1],5,SVG.pink)}
+ if(k==='calf'){const y=sk.sh[1]-8;const a=sk.leg[2],af=sk.farLeg[2];return bar(86,176,y)+L([[a[0],a[1]],[a[0]-8,a[1]+5]],SVG.skin,6)+L([[af[0],af[1]],[af[0]-7,af[1]+5]],SVG.skinD,6)}
+ return ''}
+function frame(id,t){const a=ANIM[id];const sk=lerpSkel(a.s0,a.s1,t);return svgWrap(ground()+a.st+eqRender(id,sk)+char(sk))}
+const animRafs={};
+function startAnim(id,fid){const fig=$('#fig-'+id);fig.dataset.anim='1';const dur=1800,t0=performance.now();function tick(now){if(fig.dataset.anim!=='1')return;let t=((now-t0)%dur)/dur;let p=t<0.5?t*2:(2-t*2);p=p*p*(3-2*p);fig.innerHTML=frame(fid,p);animRafs[id]=requestAnimationFrame(tick)}animRafs[id]=requestAnimationFrame(tick)}
+function stopAnim(id){const fig=$('#fig-'+id);fig.dataset.anim='0';if(animRafs[id])cancelAnimationFrame(animRafs[id]);fig.innerHTML=FIGS[fig.dataset.show||id]()}
+function stopAllAnims(){Object.keys(animRafs).forEach(id=>{const f=$('#fig-'+id);if(f&&f.dataset.anim==='1')stopAnim(id)})}
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let checkins=store.get('yc_checkins',{});
+let logs=store.get('yc_logs',[]);
+let measurements=store.get('yc_measurements',[]);
+const WEEK_DAY=['腿日','推日','拉日','腿日','休息日','推日','拉日'];
+const WEEK_SUB=['今天练臀腿，别忘了热身哦','推日：胸肩三头，复合动作打头','拉日：背后束二头，先沉肩再发力','','推日：动作质量比重量更重要','拉日：离心放慢，感受背部','腿日：深蹲主项，臀推收尾'];
+const QUOTES=['今天也要为了更好的自己努力鸭，我会一直在你身边～','每一次力竭，都是我陪你走过的证明 💗','练完记得拉伸，不然明天走路像小企鹅 🐧','你只管努力，剩下的交给时间和我～','自律的你，比蜜桃还甜 🍑','汗水和笑容，都是最可爱的勋章','今天不练，明天后悔；今天练了，明天更爱自己','肌肉会记得每一滴汗，我也会记得每一个你','三分练七分吃，记得好好吃饭哦','练三休一，休息也是进步的一部分'];
+function iso(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function todayISO(){return iso(new Date())}
+function fmtCN(s){const p=s.split('-');return `${+p[1]}月${+p[2]}日`}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function switchTab(t){stopAllAnims();$$('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));$$('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+t));window.scrollTo({top:0,behavior:'smooth'});if(t==='checkin')renderCheckin();if(t==='body')renderMs();if(t==='library'){renderLib();enhanceFigs()}}
+let currentDay='push';
+function goDay(k){stopAllAnims();currentDay=k;renderDayTabs();renderDayContent();enhanceFigs();document.getElementById('dayContent').scrollIntoView({behavior:'smooth',block:'start'})}
+function renderDayTabs(){$('#dayTabs').innerHTML=Object.values(EX).map(d=>`<button class="day-tab${currentDay===d.key?' active':''}" onclick="goDay('${d.key}')">${d.emoji} ${d.title}</button>`).join('')}
+function renderDayContent(){const d=EX[currentDay];let h=`<div class="day-head"><h3>${d.emoji} ${d.title}</h3><p>${d.focus}</p></div>`;h+=`<div class="day-tools"><button class="info-btn" onclick="toggleAllDay(this)">📖 <span class="lbl">展开全部（要领+替换）</span></button></div>`;h+=`<details class="mini"><summary>🔥 热身流程（很重要！）</summary><ul>${d.warmup.map(i=>`<li>${i}</li>`).join('')}</ul></details>`;d.exercises.forEach((ex,i)=>{h+=exCard(ex,i+1)});h+=`<details class="mini"><summary>🧘 练后拉伸</summary><ul>${d.stretch.map(i=>`<li>${i}</li>`).join('')}</ul></details>`;$('#dayContent').innerHTML=h}
+function altHtml(ex){return `<div class="alt-list">${ex.alts.map(a=>`<button class="alt" data-fid="${a[2]}" onclick="event.stopPropagation();pickAlt(this,'${ex.id}')"><b>${a[0]}</b><span>${a[1]}</span><i class="alt-check">✓</i></button>`).join('')}</div>`}
+function pickAlt(btn,exId){const box=btn.closest('.alt-list');[...box.querySelectorAll('.alt')].forEach(b=>b.classList.remove('picked'));btn.classList.add('picked');const fid=btn.dataset.fid;const card=btn.closest('.ex-card');const name=btn.querySelector('b').textContent;if(!card){toast('已选「'+name+'」💗');return}const fig=$('#fig-'+exId);if(fig.dataset.anim==='1'){stopAnim(exId);const ab=card.querySelector('[data-anim]');if(ab)ab.textContent='▶ 动图演示'}fig.classList.remove('show-end');fig.dataset.show=fid;fig.innerHTML=FIGS[fid]();const v=card.querySelector('.fig-btns a');if(v)v.href=videoUrl(fid);let badge=card.querySelector('.alt-now');if(!badge){badge=document.createElement('div');badge.className='alt-now';card.querySelector('.fig-wrap').appendChild(badge)}badge.innerHTML=`已替换：<b>${name}</b><button class="restore" onclick="restoreFig('${exId}')">↩ 还原</button>`;toast('演示图已换成「'+name+'」💗')}
+function restoreFig(exId){const fig=$('#fig-'+exId);if(!fig)return;const card=fig.closest('.ex-card');fig.dataset.show='';fig.classList.remove('show-end');fig.innerHTML=FIGS[exId]();if(card){const v=card.querySelector('.fig-btns a');if(v)v.href=videoUrl(exId);const badge=card.querySelector('.alt-now');if(badge)badge.remove();const box=card.querySelector('.alt-list');if(box)[...box.querySelectorAll('.alt')].forEach(b=>b.classList.remove('picked'))}toast('已还原主动作')}
+function togglePanel(btn,id,onText,offText){const p=$('#'+id);const isOpen=p.classList.toggle('open');btn.classList.toggle('active',isOpen);const lbl=btn.querySelector('.lbl');if(lbl)lbl.textContent=isOpen?onText:offText}
+function toggleAllDay(btn){const day=$('#dayContent');const openAll=btn.classList.toggle('active');day.querySelectorAll('.alt-panel').forEach(p=>p.classList.toggle('open',openAll));day.querySelectorAll('.det-panel').forEach(p=>p.classList.toggle('open',openAll));day.querySelectorAll('.alt-toggle').forEach(b=>b.classList.toggle('active',openAll));day.querySelectorAll('.det-toggle').forEach(b=>b.classList.toggle('active',openAll));const lbl=btn.querySelector('.lbl');lbl.textContent=openAll?'收起全部':'展开全部（要领+替换）'}
+function exCard(ex,n){return `<article class="card ex-card"><div class="fig-wrap"><span class="ex-num">${n}</span><div class="fig" id="fig-${ex.id}">${FIGS[ex.id]()}</div><button class="fig-toggle" onclick="togglePose(this,'${ex.id}')">看终点姿势 👀</button></div><div class="ex-info"><h3>${ex.name}</h3><div class="chips"><span class="chip">🎯 ${ex.target}</span><span class="chip">⏱ ${ex.sets}</span><span class="chip">☕ ${ex.rest}</span></div><div class="ex-actions"><button class="info-btn alt-toggle" onclick="togglePanel(this,'alt-${ex.id}','收起替换','便捷替换动作')">🔄 <span class="lbl">便捷替换动作</span> <span class="cnt">${ex.alts.length}</span></button><button class="info-btn det-toggle" onclick="togglePanel(this,'det-${ex.id}','收起要领','动作要领 · 易错')">📖 <span class="lbl">动作要领 · 易错</span></button></div><div class="alt-panel" id="alt-${ex.id}">${altHtml(ex)}</div><div class="det-panel" id="det-${ex.id}"><h4>📌 动作要领</h4><ol class="steps">${ex.steps.map(s=>`<li>${s}</li>`).join('')}</ol><h4>💡 要点</h4><ul class="keys">${ex.keys.map(s=>`<li>${s}</li>`).join('')}</ul><p class="breath">🫁 呼吸：${ex.breath}</p><h4>⚠️ 易错点</h4><ul class="mistakes">${ex.mistakes.map(s=>`<li>${s}</li>`).join('')}</ul></div></div></article>`}
+function togglePose(btn,id){const fig=$('#fig-'+id);if(fig.dataset.anim==='1'){stopAnim(id);const ab=fig.parentElement.querySelector('[data-anim]');if(ab)ab.textContent='▶ 动图演示';fig.classList.remove('animate')}const on=fig.classList.toggle('show-end');btn.textContent=on?'看起点姿势 🔄':'看终点姿势 👀'}
+function toggleAnimate(btn,id){const fig=$('#fig-'+id);if(fig.dataset.anim==='1'){stopAnim(id);btn.textContent='▶ 动图演示';fig.classList.remove('animate')}else{fig.classList.remove('show-end');const tb=fig.parentElement.querySelector('[data-pose]');if(tb)tb.textContent='看终点姿势 👀';fig.classList.add('animate');btn.textContent='⏸ 停止演示';startAnim(id,fig.dataset.show||id)}}
+function videoUrl(id){const ex=allExercises().find(e=>e.id===id)||EX.leg.exercises[0];return 'https://search.bilibili.com/all?keyword='+encodeURIComponent(ex.name+' 谭成义')}
+function enhanceFigs(){$$('.fig-wrap').forEach(w=>{const fig=w.querySelector('.fig');if(!fig)return;const id=fig.id.replace('fig-','');const old=w.querySelector('.fig-toggle');if(old)old.remove();const row=document.createElement('div');row.className='fig-btns';row.innerHTML=`<button class="fig-toggle" data-pose="1" onclick="togglePose(this,'${id}')">看终点姿势 👀</button><button class="fig-toggle" data-anim="1" onclick="toggleAnimate(this,'${id}')">▶ 动图演示</button><a class="fig-toggle" href="${videoUrl(id)}" target="_blank" rel="noopener">📹 视频演示</a>`;w.appendChild(row)});$$('.lib-card').forEach(c=>{if(c.querySelector('.lnk'))return;const h=c.querySelector('h4');if(!h)return;const ex=allExercises().find(e=>e.name===h.textContent);if(!ex)return;const a=document.createElement('a');a.className='lnk';a.href=videoUrl(ex.id);a.target='_blank';a.rel='noopener';a.textContent='📹 看视频演示';c.querySelector('.lib-meta').insertAdjacentElement('afterend',a)})}
+function renderTodayCard(){const d=new Date();const dn=WEEK_DAY[d.getDay()];let h=`<p class="big">${dn==='休息日'?'🧘 今天是休息日':'💪 今天该练：'+dn}</p><p class="sub">${WEEK_SUB[d.getDay()]}</p>`;if(dn!=='休息日'){const k=dn==='推日'?'push':dn==='拉日'?'pull':'leg';h+=`<button class="btn" onclick="goDay('${k}')">去看 ${dn} 👉</button>`}$('#todayCard').innerHTML=h}
+function streak(){let s=0;const d=new Date();if(!checkins[iso(d)])d.setDate(d.getDate()-1);while(checkins[iso(d)]){s++;d.setDate(d.getDate()-1)}return s}
+function renderStats(){const total=Object.keys(checkins).length;const now=new Date();const ym=iso(new Date(now.getFullYear(),now.getMonth(),1)).slice(0,7);const month=Object.keys(checkins).filter(dd=>dd.startsWith(ym)).length;$('#statsRow').innerHTML=`<div class="stat-card"><div class="n">${streak()}</div><div class="t">🔥 连续打卡(天)</div></div><div class="stat-card"><div class="n">${total}</div><div class="t">🏅 累计打卡</div></div><div class="stat-card"><div class="n">${month}</div><div class="t">📅 本月打卡</div></div>`}
+let calOffset=0;
+function renderCal(){const now=new Date();const y=now.getFullYear(),m=now.getMonth()+calOffset;const first=new Date(y,m,1);const dim=new Date(y,m+1,0).getDate();const sd=first.getDay();$('#calHead').innerHTML=`<button onclick="calShift(-1)">‹</button><b>${y}年${m+1}月</b><button onclick="calShift(1)">›</button>`;let h='';['日','一','二','三','四','五','六'].forEach(l=>{h+=`<div class="cal-label">${l}</div>`});for(let i=0;i<sd;i++)h+='<div class="cal-cell blank"></div>';for(let d=1;d<=dim;d++){const ds=iso(new Date(y,m,d));const done=!!checkins[ds];const today=calOffset===0&&d===now.getDate();h+=`<div class="cal-cell${done?' done':''}${today?' today':''}" title="${ds}">${d}${done?'<span class="mini-heart">💗</span>':''}</div>`}$('#calGrid').innerHTML=h}
+function calShift(n){calOffset+=n;renderCal()}
+function toggleCheck(){const t=todayISO();if(checkins[t]){delete checkins[t];toast('已取消今日打卡，明天继续鸭～')}else{checkins[t]={at:Date.now()};toast('打卡成功！你最棒啦 💗');burstHearts($('#checkBtn'))}store.set('yc_checkins',checkins);renderCheckin()}
+function renderCheckin(){const t=todayISO();const done=!!checkins[t];const btn=$('#checkBtn');btn.textContent=done?`✅ 今天已打卡 · ${WEEK_DAY[new Date().getDay()]}`:'💖 今天打卡！';btn.classList.toggle('done',done);renderStats();renderCal();renderLogs()}
+function renderLogs(){const list=logs.slice().sort((a,b)=>b.date.localeCompare(a.date));if(!list.length){$('#logList').innerHTML='<p class="empty">还没有训练记录，练完来记一笔吧 📝</p>';return}$('#logList').innerHTML=list.map(l=>`<div class="list-item"><div><b>${fmtCN(l.date)} · ${esc(l.day)}</b>${l.dur?` <span class="meta">${esc(l.dur)}分钟</span>`:''}<div class="meta">${esc(l.note)||'无备注'}</div></div><button class="del" onclick="delLog('${l.id}')">🗑</button></div>`).join('')}
+function delLog(id){logs=logs.filter(l=>l.id!==id);store.set('yc_logs',logs);renderLogs();toast('已删除')}
+let metric='weight';
+const METRIC_LABEL={weight:'体重 (kg)',hip:'臀围 (cm)',waist:'腰围 (cm)',thigh:'腿围 (cm)'};
+function renderMs(){renderMetricTabs();renderChart();renderMsList()}
+function renderMetricTabs(){$('#metricTabs').innerHTML=Object.keys(METRIC_LABEL).map(k=>`<button class="metric-tab${metric===k?' active':''}" onclick="setMetric('${k}')">${METRIC_LABEL[k]}</button>`).join('')}
+function setMetric(k){metric=k;renderMetricTabs();renderChart()}
+function renderChart(){const M=measurements.filter(x=>x[metric]!==''&&x[metric]!=null).sort((a,b)=>a.date.localeCompare(b.date));const wrap=$('#chartWrap');if(!M.length){wrap.innerHTML='<p class="empty">还没有记录～从「新增记录」开始吧 ✨</p>';return}const W=560,H=260,P=34;const vals=M.map(x=>+x[metric]);let min=Math.min(...vals),max=Math.max(...vals);if(min===max){min-=1;max+=1}const pad=(max-min)*0.15;min-=pad;max+=pad;const pts=M.map((x,i)=>{const px=P+(W-2*P)*(M.length===1?0.5:i/(M.length-1));const py=H-P-(H-2*P)*((+x[metric])-min)/(max-min);return [px,py,x.date,+x[metric]]});const linePts=pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');const area=`${linePts} ${pts[pts.length-1][0].toFixed(1)} ${H-P} ${pts[0][0].toFixed(1)} ${H-P}`;let h=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF9EBB" stop-opacity=".35"/><stop offset="100%" stop-color="#FF9EBB" stop-opacity="0"/></linearGradient></defs>`;for(let g=0;g<=3;g++){const gy=P+g*(H-2*P)/3;const gv=(max-(max-min)*g/3).toFixed(1);h+=`<line x1="${P}" y1="${gy}" x2="${W-P}" y2="${gy}" stroke="#FFE0EB" stroke-width="1"/>`+`<text x="${P-6}" y="${gy+3}" text-anchor="end" font-size="10" fill="#C9A3B2">${gv}</text>`}h+=`<polygon points="${area}" fill="url(#cg)"/>`;h+=`<polyline points="${linePts}" fill="none" stroke="#FF7FA9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`;pts.forEach(p=>{h+=`<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="#fff" stroke="#FF7FA9" stroke-width="2.5"/>`;h+=`<text x="${p[0]}" y="${p[1]-9}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#E85D8E">${p[3].toFixed(1)}</text>`});h+=`<text x="${P}" y="${H-10}" font-size="10" fill="#C9A3B2">${M[0].date}</text>`;if(M.length>1)h+=`<text x="${W-P}" y="${H-10}" text-anchor="end" font-size="10" fill="#C9A3B2">${M[M.length-1].date}</text>`;h+='</svg>';wrap.innerHTML=h}
+function renderMsList(){const list=measurements.slice().sort((a,b)=>b.date.localeCompare(a.date));if(!list.length){$('#msList').innerHTML='<p class="empty">还没有记录～</p>';return}$('#msList').innerHTML=list.map(m=>{const parts=[];if(m.weight)parts.push(`体重 ${m.weight}kg`);if(m.hip)parts.push(`臀围 ${m.hip}cm`);if(m.waist)parts.push(`腰围 ${m.waist}cm`);if(m.thigh)parts.push(`腿围 ${m.thigh}cm`);return `<div class="list-item"><div><b>${fmtCN(m.date)}</b><div class="meta">${parts.join(' · ')}</div></div><button class="del" onclick="delMs('${m.id}')">🗑</button></div>`}).join('')}
+function delMs(id){measurements=measurements.filter(m=>m.id!==id);store.set('yc_measurements',measurements);renderMs();toast('已删除')}
+let libFilter='全部',libQuery='';
+function allExercises(){return Object.values(EX).flatMap(d=>d.exercises)}
+function renderLib(){$('#libChips').innerHTML=['全部',...new Set(allExercises().flatMap(e=>e.muscles))].map(m=>`<button class="chip-btn${libFilter===m?' active':''}" onclick="setLibFilter('${m}')">${m}</button>`).join('');const list=allExercises().filter(e=>(libFilter==='全部'||e.muscles.includes(libFilter))&&(!libQuery||e.name.includes(libQuery)));$('#libGrid').innerHTML=list.map(ex=>libCard(ex)).join('')||'<div class="empty">没有找到相关动作 🥺</div>'}
+function setLibFilter(m){libFilter=m;renderLib();enhanceFigs()}
+function libCard(ex){return `<div class="lib-card" onclick="this.classList.toggle('open')"><div class="lib-fig"><div class="fig">${FIGS[ex.id]()}</div></div><h4>${ex.name}</h4><p class="lib-meta">🎯 ${ex.target} · ${ex.sets}</p><div class="lib-detail"><span class="lb2">🔄 便捷替换</span>${altHtml(ex)}<span class="lb2">📌 动作要领</span><ol class="steps">${ex.steps.map(s=>`<li>${s}</li>`).join('')}</ol><span class="lb2">💡 要点</span><ul class="keys">${ex.keys.map(s=>`<li>${s}</li>`).join('')}</ul><p class="breath">🫁 呼吸：${ex.breath}</p><span class="lb2">⚠️ 易错点</span><ul class="mistakes">${ex.mistakes.map(s=>`<li>${s}</li>`).join('')}</ul></div></div>`}
+let toastTimer;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2200)}
+function burstHearts(el){const r=el.getBoundingClientRect();const cx=r.left+r.width/2,cy=r.top+r.height/2;const emo=['💗','💖','💕','✨','🍑','⭐'];for(let i=0;i<10;i++){const s=document.createElement('span');s.className='burst';s.textContent=emo[i%emo.length];s.style.left=(cx+Math.random()*40-20)+'px';s.style.top=(cy+Math.random()*30-15)+'px';s.style.setProperty('--dx',(Math.random()*160-80)+'px');s.style.setProperty('--dy',(Math.random()*-140-30)+'px');s.style.fontSize=(14+Math.random()*14)+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),950)}}
+function initHearts(){const box=$('.hearts-bg');const emo=['🖤','💗','🎀','💖','🌸','✨','⭐'];for(let i=0;i<16;i++){const s=document.createElement('span');s.className='heart';s.textContent=emo[i%emo.length];s.style.left=Math.random()*100+'%';s.style.fontSize=(12+Math.random()*18)+'px';s.style.animationDuration=(9+Math.random()*12)+'s';s.style.animationDelay=(Math.random()*12)+'s';box.appendChild(s)}}
+$('#logForm').addEventListener('submit',e=>{e.preventDefault();const date=$('#logDate').value;if(!date){toast('先选个日期哦');return}logs.push({id:String(Date.now()),date,day:$('#logDay').value,dur:$('#logDur').value,note:$('#logNote').value.trim()});store.set('yc_logs',logs);$('#logDur').value='';$('#logNote').value='';renderLogs();toast('记录好啦 📝')});
+$('#msForm').addEventListener('submit',e=>{e.preventDefault();const date=$('#msDate').value;const weight=+$('#msWeight').value,hip=+$('#msHip').value,waist=+$('#msWaist').value,thigh=+$('#msThigh').value;if(!date){toast('先选个日期哦');return}if(!(weight||hip||waist||thigh)){toast('至少要填一项数据哦');return}measurements.push({id:String(Date.now()),date,weight:weight||'',hip:hip||'',waist:waist||'',thigh:thigh||''});store.set('yc_measurements',measurements);renderMs();['msWeight','msHip','msWaist','msThigh'].forEach(id=>$('#'+id).value='');toast('记录成功，继续加油 📈')});
+$('#libSearch').addEventListener('input',e=>{libQuery=e.target.value.trim();renderLib();enhanceFigs()});
+function init(){$('#logDate').value=todayISO();$('#msDate').value=todayISO();initHearts();const q=$('#heroQuote');q.textContent=QUOTES[Math.floor(Math.random()*QUOTES.length)];q.onclick=()=>{q.textContent=QUOTES[Math.floor(Math.random()*QUOTES.length)]};renderTodayCard();renderDayTabs();renderDayContent();renderCheckin();renderMs();renderLib()}
+init();themeHero();enhanceFigs();
+</script>
+</body>
+</html>
